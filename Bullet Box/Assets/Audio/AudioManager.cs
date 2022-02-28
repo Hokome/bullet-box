@@ -14,10 +14,6 @@ namespace AssetFactory
 		public AudioMixer mixer;
 
 		public AudioSource MusicSource { get; private set; }
-
-		private Coroutine musicStopCoroutine;
-		private MusicClip queuedMusic;
-
 		//private Dictionary<string, SoundClip> clipDictionary;
 
 		protected override void Awake()
@@ -31,18 +27,6 @@ namespace AssetFactory
 			//clipDictionary = new Dictionary<string, SoundClip>(list.clips.Count);
 			//list.clips.ForEach(c => clipDictionary.Add(c.name, c));
 		}
-
-		#region Testing
-		public MusicClip testClip;
-		public SFXClip testSFX;
-		private void Update()
-		{
-			if (UnityEngine.InputSystem.Keyboard.current.enterKey.wasPressedThisFrame)
-				PlaySound(testSFX, new PlayOptions { maxDistance = 50f });
-		}
-
-		public void Test() => PlaySound(testClip, new PlayOptions { loop = true });
-		#endregion
 
 		public static AudioSource PlaySound(SoundClip sound) => PlaySound(sound, Vector3.zero, new PlayOptions());
 		public static AudioSource PlaySound(SoundClip sound, PlayOptions options) => PlaySound(sound, Vector3.zero, options);

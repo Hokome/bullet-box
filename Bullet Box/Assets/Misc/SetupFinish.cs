@@ -14,7 +14,6 @@ namespace AssetFactory.Initialization
 			SceneManager.LoadScene(1);
 
 			AudioManager.Inst.UpdateMixers();
-			AudioManager.Inst.Test();
 		}
 	}
 }

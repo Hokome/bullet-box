@@ -1,0 +1,91 @@
+using AssetFactory.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+//Originally from AssetFactory
+namespace AssetFactory
+{
+    public class PauseMenu : MenuManager
+	{
+		public static PauseMenu Inst { get; private set; }
+		public static bool IsPaused => Inst.Paused;
+
+		[SerializeField] private InputActionReference pauseAction;
+
+		private bool paused;
+		public bool Paused
+		{
+			get => paused;
+			set
+			{
+				paused = value;
+				if (value)
+				{
+					ToMain();
+					Cursor.visible = true;
+					Cursor.lockState = CursorLockMode.None;
+				}
+				else
+				{
+					currentMenu.Display(false);
+					Cursor.visible = false;
+					Cursor.lockState = CursorLockMode.Locked;
+				}
+
+				Time.timeScale = value ? 0f : 1f;
+			}
+		}
+
+		public void TogglePause()
+		{
+			if (!isActiveAndEnabled)
+				return;
+			//Unpause only if in main screen
+			if (Paused && navigationStack.Count > 0)
+				return;
+
+			Paused = !Paused;
+		}
+		
+		public override void Back()
+		{
+			//Delay to avoid unpausing instead of backing out
+			StartCoroutine(BackCoroutine());
+		}
+		IEnumerator BackCoroutine()
+		{
+			yield return null;
+			base.Back();
+		}
+
+		private void Awake()
+		{
+			if (Inst == null)
+			{
+				Inst = this;
+				DontDestroyOnLoad(gameObject);
+			}
+			else
+			{
+				Debug.LogWarning($"Singleton for {typeof(PauseMenu)} already exists.");
+				Destroy(gameObject);
+			}
+		}
+
+
+		protected override void OnEnable()
+		{
+			pauseAction.action.performed += _ => TogglePause();
+			base.OnEnable();
+		}
+		protected override void OnDisable()
+		{
+			if (CurrentMenu != null)
+				CurrentMenu.Display(false);
+			pauseAction.action.performed -= _ => TogglePause();
+			base.OnDisable();
+		}
+	}
+}
