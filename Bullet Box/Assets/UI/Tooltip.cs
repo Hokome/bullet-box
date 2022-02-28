@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
 	public class Tooltip : MonoBehaviour
 	{

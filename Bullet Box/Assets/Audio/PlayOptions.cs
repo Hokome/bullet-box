@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Originally from AssetFactory
-namespace AssetFactory.Audio
+namespace BulletBox.Audio
 {
 	[System.Serializable]
     public class PlayOptions 

@@ -1,11 +1,11 @@
-using AssetFactory.Audio;
+using BulletBox.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
 	public class UIAudioPlayer : MonoBehaviour,
 		IPointerEnterHandler, IPointerClickHandler, ISelectHandler

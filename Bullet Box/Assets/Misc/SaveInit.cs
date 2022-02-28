@@ -2,7 +2,7 @@ using System.IO;
 using UnityEngine;
 
 //Originally from AssetFactory
-namespace AssetFactory.Initialization
+namespace BulletBox.Initialization
 {
 	public class SaveInit : MonoBehaviour
     {

@@ -1,10 +1,10 @@
-using AssetFactory.UI;
+using BulletBox.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 //Originally from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
     public class MainMenu : MenuManager
     {
@@ -51,16 +51,12 @@ namespace AssetFactory
 		protected override void OnEnable()
 		{
 			base.OnEnable();
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.None;
 			ToMain();
 		}
 
 		protected override void OnDisable()
 		{
 			base.OnDisable();
-			Cursor.visible = false;
-			Cursor.lockState = CursorLockMode.Locked;
 			currentMenu.Display(false);
 		}
 	}

@@ -1,5 +1,5 @@
 //Originally from AssetFactory
-namespace AssetFactory.IO
+namespace BulletBox.IO
 {
 	public interface IByteConvertible
 	{

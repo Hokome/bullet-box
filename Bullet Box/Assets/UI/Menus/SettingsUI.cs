@@ -10,7 +10,7 @@ using UnityEngine.Localization.Settings;
 #endif
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
 	public class SettingsUI : MonoBehaviour
 	{

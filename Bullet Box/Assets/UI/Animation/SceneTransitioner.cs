@@ -7,7 +7,7 @@ using System;
 using UnityEngine.Events;
 
 //Originally from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
 	public class SceneTransitioner : MonoSingleton<SceneTransitioner>
 	{

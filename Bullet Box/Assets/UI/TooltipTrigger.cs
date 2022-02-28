@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
 	public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	{

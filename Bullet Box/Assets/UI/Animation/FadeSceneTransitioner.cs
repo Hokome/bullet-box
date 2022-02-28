@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
 	public class FadeSceneTransitioner : SceneTransitioner
 	{

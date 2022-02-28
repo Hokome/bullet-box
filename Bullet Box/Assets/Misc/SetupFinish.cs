@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //Originally from AssetFactory
-namespace AssetFactory.Initialization
+namespace BulletBox.Initialization
 {
 	public class SetupFinish : MonoBehaviour
     {

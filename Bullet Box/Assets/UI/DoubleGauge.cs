@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
 	public class DoubleGauge : MonoBehaviour
 	{

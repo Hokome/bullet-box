@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI.Tweening
+namespace BulletBox.UI.Tweening
 {
     public class FadeTweener : UITweener
     {

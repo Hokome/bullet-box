@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 //Originally from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
 #if CINEMACHINE
 	public class CameraLockInput : MonoBehaviour, AxisState.IInputAxisProvider

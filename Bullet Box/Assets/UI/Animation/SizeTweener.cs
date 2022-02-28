@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI.Tweening
+namespace BulletBox.UI.Tweening
 {
     public class SizeTweener : UITweener,
 		IPointerEnterHandler, IPointerExitHandler, 

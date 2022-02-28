@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
     public class SwipeSceneTransitioner : SceneTransitioner
     {

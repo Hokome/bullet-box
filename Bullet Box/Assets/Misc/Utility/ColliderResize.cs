@@ -2,7 +2,7 @@
 using UnityEngine;
 
 //Originally from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
 	[RequireComponent(typeof(SpriteRenderer))]
 	[RequireComponent(typeof(Collider2D))]

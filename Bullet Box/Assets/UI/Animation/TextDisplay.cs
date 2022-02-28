@@ -5,7 +5,7 @@ using TMPro;
 using System;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
 	public class TextDisplay : MonoBehaviour
 	{

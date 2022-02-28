@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
 //Originally from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
 	public class DebugEx : MonoBehaviour
 	{

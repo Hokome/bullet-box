@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 //Originally from AssetFactory
-namespace AssetFactory.Audio
+namespace BulletBox.Audio
 {
 
 	[CreateAssetMenu(fileName = "sound_effect", menuName = "Audio/SFX", order = 1)]

@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AssetFactory.UI;
+using BulletBox.UI;
 
 //Orignially from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
 	public class ErrorPrompt : MonoBehaviour
 	{

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 //Originally from AssetFactory
-namespace AssetFactory.Audio
+namespace BulletBox.Audio
 {
 
 	[CreateAssetMenu(fileName = "music_track", menuName = "Audio/Music", order = 1)]

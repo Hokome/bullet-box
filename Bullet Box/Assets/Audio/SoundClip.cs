@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 //Originally from AssetFactory
-namespace AssetFactory.Audio
+namespace BulletBox.Audio
 {
 	public abstract class SoundClip : ScriptableObject
 	{

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //Originally from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
 	public class Settings
 	{

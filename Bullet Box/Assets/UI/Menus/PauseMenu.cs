@@ -1,11 +1,11 @@
-using AssetFactory.UI;
+using BulletBox.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 //Originally from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
     public class PauseMenu : MenuManager
 	{
@@ -24,14 +24,10 @@ namespace AssetFactory
 				if (value)
 				{
 					ToMain();
-					Cursor.visible = true;
-					Cursor.lockState = CursorLockMode.None;
 				}
 				else
 				{
 					currentMenu.Display(false);
-					Cursor.visible = false;
-					Cursor.lockState = CursorLockMode.Locked;
 				}
 
 				Time.timeScale = value ? 0f : 1f;

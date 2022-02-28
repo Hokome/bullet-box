@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 //Originally from AssetFactory
-namespace AssetFactory.UI
+namespace BulletBox.UI
 {
 	//public enum AnimationType
 	//{

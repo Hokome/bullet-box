@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Originally from AssetFactory
-namespace AssetFactory
+namespace BulletBox
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
