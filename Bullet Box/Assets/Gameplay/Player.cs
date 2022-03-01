@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using InputCallback = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 namespace BulletBox
 {
@@ -16,7 +17,6 @@ namespace BulletBox
 		[SerializeField] private float maxHealth = 5f;
 		[SerializeField] private float invincibilityTime = 3f;
 
-		[SerializeField] private InputActionReference fireAction;
 		[SerializeField] private Transform gunTransform;
 		[SerializeField] private Gun weapon;
 
@@ -24,6 +24,7 @@ namespace BulletBox
 
 		private Rigidbody2D rb;
 		private Camera cam;
+		private PlayerInput input;
 
 		private Vector2 moveInput;
 		private bool fireInput;
@@ -39,13 +40,23 @@ namespace BulletBox
 			}
 		}
 
+		protected override void Awake()
+		{
+			base.Awake();
+			input = GetComponent<PlayerInput>();
+		}
+
 		private void Start()
 		{
 			rb = GetComponent<Rigidbody2D>();
 			cam = Camera.main;
+
 			HUDManager.Inst.HealthBar.Max = maxHealth;
 			Health = maxHealth;
 			HUDManager.Inst.HealthBar.ForceUpdate();
+
+			moveAction = input.actions.FindAction("Move");
+			fireAction = input.actions.FindAction("Fire");
 		}
 
 		private void Update()
@@ -57,7 +68,6 @@ namespace BulletBox
 			if (fireInput)
 				weapon.Fire();
 		}
-
 		private void FixedUpdate()
 		{
 			float force = acceleration * Time.fixedDeltaTime;
@@ -66,22 +76,37 @@ namespace BulletBox
 				|| Vector3.Project(rb.velocity, moveInput).sqrMagnitude < maxSpeed * maxSpeed)
 				rb.velocity += moveInput * force;
 		}
-
-		private void OnMove(InputValue iv)
-		{
-			moveInput = iv.Get<Vector2>();
-			moveInput = Vector2.ClampMagnitude(moveInput, 1f);
-		}
-
 		private void OnEnable()
 		{
-			fireAction.action.performed += _ => fireInput = true;
-			fireAction.action.canceled += _ => fireInput = false;
+			input.onActionTriggered += ReadInput;
 		}
 		private void OnDisable()
 		{
-			fireAction.action.performed -= _ => fireInput = true;
-			fireAction.action.canceled -= _ => fireInput = false;
+			input.onActionTriggered -= ReadInput;
+		}
+
+		private InputAction moveAction;
+		private InputAction fireAction;
+
+		private void ReadInput(InputCallback ctx)
+		{
+			if (ctx.action == moveAction)
+				Move(ctx);
+			else if (ctx.action == fireAction)
+				Fire(ctx);
+		}
+		private void Move(InputCallback ctx)
+		{
+			moveInput = ctx.ReadValue<Vector2>();
+			moveInput = Vector2.ClampMagnitude(moveInput, 1f);
+		}
+
+		private void Fire(InputCallback ctx)
+		{
+			if (ctx.performed)
+				fireInput = true;
+			else if (ctx.canceled)
+				fireInput = false;
 		}
 
 		public void Hit(float damage)
