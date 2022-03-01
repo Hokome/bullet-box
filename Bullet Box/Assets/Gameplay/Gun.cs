@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BulletBox
 {
-	public class Gun : MonoBehaviour
+	public class Gun : Weapon
 	{
 		[SerializeField] private float fireRate;
 		[SerializeField] private float damage;
@@ -13,7 +13,7 @@ namespace BulletBox
 
 		private float lastShot = float.NegativeInfinity;
 
-		public bool Fire()
+		public override bool Fire()
 		{
 			if (Time.time - lastShot >= 1f / fireRate)
 			{

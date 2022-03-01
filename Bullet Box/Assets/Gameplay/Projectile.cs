@@ -7,13 +7,18 @@ namespace BulletBox
 	public class Projectile : MonoBehaviour
 	{
 		[SerializeField] private float speed;
+		[SerializeField] private int pierce = 1;
 		[SerializeField] private LayerMask hitLayer;
 		[SerializeField] private LayerMask obstacleLayer;
 
 		[HideInInspector] public float damage;
 
+		private List<IHittable> hits;
+
 		private void Start()
 		{
+			if (pierce > 1)
+				hits = new List<IHittable>(pierce);
 			GetComponent<Rigidbody2D>().velocity = transform.right * speed;
 		}
 
@@ -21,8 +26,18 @@ namespace BulletBox
 		{
 			if (Utility.IsInLayerMask(collision.gameObject.layer, hitLayer))
 			{
-				collision.GetComponent<IHittable>().Hit(damage);
-				Destroy(gameObject);
+				IHittable hit = collision.GetComponent<IHittable>();
+				if (hits != null)
+				{
+					if (hits.Contains(hit))
+						return;
+					else
+						hits.Add(hit);
+				}
+				hit.Hit(damage);
+				pierce--;
+				if (pierce <= 0)
+					Destroy(gameObject);
 			}
 			else if (Utility.IsInLayerMask(collision.gameObject.layer, obstacleLayer))
 			{

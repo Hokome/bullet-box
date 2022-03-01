@@ -11,7 +11,7 @@ public static class MathEx
     /// <param name="v">Vector to rotate</param>
     /// <param name="degrees">Degrees by which the Vector should be rotated</param>
     /// <returns></returns>
-    public static Vector2 Rotate(Vector2 v, float degrees)
+    public static Vector2 RotateVector(Vector2 v, float degrees)
     {
         float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
         float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
@@ -64,5 +64,14 @@ public static class MathEx
         return comp.sqrMagnitude > v.sqrMagnitude;
 	}
 
-    public static bool SameSign(float a, float b) => (a < 0 && b < 0) || (a > 0 && b > 0);
+	/// <summary>
+	/// Checks if the speed of the velocity is smaller than the max speed vector when projected
+	/// Will return true if vetctors in opposite directions.
+	/// </summary>
+	/// <param name="v">The velocity that needs to be checked</param>
+	/// <param name="maxSpeed">How high can the velocity be compared to that vector</param>
+	public static bool MaxSpeed(Vector2 v, Vector2 maxSpeed)
+		=> Vector2.Dot(v, maxSpeed) < 0f || Vector3.Project(v, maxSpeed).sqrMagnitude < maxSpeed.sqrMagnitude;
+
+	public static bool SameSign(float a, float b) => (a < 0 && b < 0) || (a > 0 && b > 0);
 }

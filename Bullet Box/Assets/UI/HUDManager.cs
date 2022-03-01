@@ -12,11 +12,14 @@ namespace BulletBox
     {
 		#region References
 		[SerializeField] private DoubleGauge healthBar;
+		[SerializeField] private Image abilityCooldown;
+		[SerializeField] private WeaponHUD[] weapons;
 
 		private CanvasGroup main;
 		#endregion
 
 		public DoubleGauge HealthBar => healthBar;
+		public WeaponHUD[] WeaponHUDs => weapons;
 
 		#region Part enabling
 		public void EnableMain(bool value)
@@ -24,6 +27,14 @@ namespace BulletBox
 			main.alpha = value ? 1f : 0f;
 		}
 		#endregion
+
+		public void SetAbilityCooldown(float cooldown)
+		{
+			LeanTween.value(
+				abilityCooldown.gameObject,
+				f => abilityCooldown.fillAmount = f, 0f, 1f, cooldown);
+		}
+
 		protected override void Awake()
 		{
 			base.Awake();

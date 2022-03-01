@@ -7,15 +7,18 @@ namespace BulletBox
 	[RequireComponent(typeof(Rigidbody2D))]
 	public abstract class Enemy : MonoBehaviour, IHittable
     {
-		[Header("Spawning")]
-		[SerializeField] private float spawnCooldown;
+		[SerializeField] private float spawnCooldown = 1;
 		[SerializeField] private float spawnCost;
+		[SerializeField] private SpriteRenderer flash;
 		[Header("Stats")]
 		[SerializeField] private float maxHealth;
 
 		protected Rigidbody2D rb;
 
 		public float Health { get; set; }
+
+		public float SpawnCooldown => spawnCooldown;
+		public float SpawnCost => SpawnCost;
 
 		protected virtual void Start()
 		{
@@ -28,8 +31,17 @@ namespace BulletBox
 			Health -= damage;
 			if (Health <= 0f)
 				Kill();
+			else
+				StartCoroutine(Flash());
 		}
-		public void Kill()
+		private IEnumerator Flash()
+		{
+			flash.enabled = true;
+			yield return new WaitForEndOfFrame();
+			yield return new WaitForSeconds(0.05f);
+			flash.enabled = false;
+		}
+		public virtual void Kill()
 		{
 			Destroy(gameObject);
 		}

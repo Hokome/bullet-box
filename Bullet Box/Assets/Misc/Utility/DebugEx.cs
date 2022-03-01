@@ -86,16 +86,16 @@ namespace BulletBox
 		#region Gizmos
 		public static void DrawRect(Rect r, Color color)
 		{
-			Vector2 nw = r.position;
-			Vector2 se = r.position + r.size;
-			Vector2 ne = new Vector2(r.width, r.y);
-			Vector2 sw = new Vector2(r.x, r.height);
+			Vector2 sw = r.position;
+			Vector2 ne = r.position + r.size;
+			Vector2 se = new Vector2(r.x + r.width, r.y);
+			Vector2 nw = new Vector2(r.x, r.y + r.height);
 
 			Gizmos.color = color;
-			Debug.DrawLine(nw, ne);
-			Debug.DrawLine(ne, se);
-			Debug.DrawLine(se, sw);
-			Debug.DrawLine(sw, nw);
+			Gizmos.DrawLine(nw, ne);
+			Gizmos.DrawLine(ne, se);
+			Gizmos.DrawLine(se, sw);
+			Gizmos.DrawLine(sw, nw);
 		}
 		public static void DrawCross(Vector3 point, Color color, float size = 1f)
 		{
