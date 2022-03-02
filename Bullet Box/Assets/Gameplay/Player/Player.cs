@@ -37,8 +37,8 @@ namespace BulletBox
 			get => health;
 			set
 			{
-				health = value;
-				HUDManager.Inst.HealthBar.Value = value;
+				health = Mathf.Min(value, maxHealth);
+				HUDManager.Inst.HealthBar.Value = health;
 			}
 		}
 
@@ -196,12 +196,16 @@ namespace BulletBox
 				return;
 			Health -= damage;
 
-			Invincible = true;
-
-			LeanTween.delayedCall(invincibilityTime, () => Invincible = false);
+			StartCoroutine(HitCoroutine());
 
 			if (Health <= 0f)
 				Die();
+		}
+		private IEnumerator HitCoroutine()
+		{
+			Invincible = true;
+			yield return new WaitForSeconds(invincibilityTime);
+			Invincible = false;
 		}
 		private void Die()
 		{

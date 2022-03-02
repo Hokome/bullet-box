@@ -27,7 +27,8 @@ namespace BulletBox
 				}
 				else
 				{
-					currentMenu.Display(false);
+					if (currentMenu != null)
+						currentMenu.Display(false);
 				}
 
 				Time.timeScale = value ? 0f : 1f;

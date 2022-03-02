@@ -5,20 +5,14 @@ using UnityEngine;
 namespace BulletBox
 {
 	[RequireComponent(typeof(Rigidbody2D))]
-	public abstract class Enemy : MonoBehaviour, IHittable
+	public abstract class Enemy : Spawnable, IHittable
     {
-		[SerializeField] private float spawnCooldown = 1;
-		[SerializeField] private float spawnCost;
 		[SerializeField] private SpriteRenderer flash;
 		[Header("Stats")]
 		[SerializeField] private float maxHealth;
 
 		protected Rigidbody2D rb;
-
 		public float Health { get; set; }
-
-		public float SpawnCooldown => spawnCooldown;
-		public float SpawnCost => SpawnCost;
 
 		protected virtual void Start()
 		{

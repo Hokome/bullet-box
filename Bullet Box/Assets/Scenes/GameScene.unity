@@ -636,7 +636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &431943172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,12 +646,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 431943171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81dc32168f03c7c43ae4569b2ab3ab5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 556b4b4bc63e56e4396759e51c17b9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRange: {x: 20, y: 10}
-  enemies:
-  - {fileID: 8981394691902792428, guid: 9073450e1e094cc418f60e85f6066880, type: 3}
+  mapDot: {fileID: 5654031833294187505, guid: fd2ef77c5e375454ab10d9c96d5e4485, type: 3}
 --- !u!212 &431943173
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -938,6 +936,7 @@ GameObject:
   - component: {fileID: 647130566}
   - component: {fileID: 647130565}
   - component: {fileID: 647130567}
+  - component: {fileID: 647130568}
   m_Layer: 9
   m_Name: Grid
   m_TagString: Untagged
@@ -1028,9 +1027,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRange: {x: 20, y: 10}
   enemies:
+  - {fileID: 9025810857475028917, guid: 934a91b1e349c594986dd20b18c491bd, type: 3}
+  initialDelay: 10
+--- !u!114 &647130568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647130564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ac1135393109c40ba5fcbd101554f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRange: {x: 20, y: 10}
+  enemies:
   - {fileID: 8981394691902792428, guid: 9073450e1e094cc418f60e85f6066880, type: 3}
   - {fileID: 2805240519365115147, guid: 6cc8c8e5e3d978a40851505713c26d80, type: 3}
   - {fileID: 6928364197282909687, guid: 83c0a90352966b549bb118b431b7bbdb, type: 3}
+  initialDelay: 0
+  spawnParticles: {fileID: 5371551414120696484, guid: 5674ebc61c4abe84b8dfea77f1d6724b, type: 3}
 --- !u!1 &841682526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1062,7 @@ GameObject:
   - component: {fileID: 841682531}
   - component: {fileID: 841682530}
   - component: {fileID: 841682529}
+  - component: {fileID: 841682533}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1260,6 +1278,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &841682533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841682526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175117391810acf418cfa905170a8627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &930673294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,7 +1368,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1389187267}
   - component: {fileID: 1389187266}
-  - component: {fileID: 1389187265}
   m_Layer: 0
   m_Name: Map Camera
   m_TagString: Untagged
@@ -1345,14 +1375,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1389187265
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389187264}
-  m_Enabled: 1
 --- !u!20 &1389187266
 Camera:
   m_ObjectHideFlags: 0
@@ -1377,7 +1399,7 @@ Camera:
     width: 1
     height: 0.9
   near clip plane: 0.3
-  far clip plane: 10
+  far clip plane: 20
   field of view: 60
   orthographic: 1
   orthographic size: 16
@@ -1404,7 +1426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389187264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 431943174}

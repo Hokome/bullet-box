@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6928364197282909684}
   - component: {fileID: 6928364197282909687}
   - component: {fileID: 6928364197282909685}
+  - component: {fileID: -8622993477604178520}
   m_Layer: 6
   m_Name: Shooter
   m_TagString: Untagged
@@ -124,10 +125,10 @@ MonoBehaviour:
   spawnCost: 0
   flash: {fileID: 6928364199186577277}
   maxHealth: 5
-  acceleration: 20
+  acceleration: 10
   maxSpeed: 2
   minDist: 5
-  maxDist: 12
+  maxDist: 20
   weapon: {fileID: 6928364197377737401}
 --- !u!58 &6928364197282909685
 CircleCollider2D:
@@ -145,6 +146,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &-8622993477604178520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6928364197282909680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175117391810acf418cfa905170a8627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &6928364197377737403
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,8 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0c221f77e8e2f4baffff9862e0bc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   fireRate: 0.5
-  damage: 1
+  damage: 2
   offset: 0.5
   projectile: {fileID: 8586911541668113167, guid: 7bf994d43f6e02248b8a6c72fecca0d7, type: 3}
 --- !u!1 &6928364199186577279
