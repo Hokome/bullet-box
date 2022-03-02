@@ -26,9 +26,10 @@ namespace BulletBox
 			}
 		}
 
-		public virtual void Spawn(Spawnable s)
+		public virtual void Spawn(Spawnable s) => Spawn(s, RandomPosition());
+		public virtual void Spawn(Spawnable s, Vector3 position)
 		{
-			Instantiate(s).transform.position = RandomPosition();
+			Instantiate(s).transform.position = (Vector2)position;
 		}
 		protected Vector2 RandomPosition() 
 			=> new Vector2(

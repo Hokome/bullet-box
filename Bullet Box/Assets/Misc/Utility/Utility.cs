@@ -10,6 +10,22 @@ namespace BulletBox
 			GUIUtility.systemCopyBuffer = text;
 		}
 		public static bool IsInLayerMask(int layer, LayerMask mask) => (mask.value & (1 << layer)) > 0;
+
+		public static Vector2 RandomSquare(float radius)
+			=> new Vector2(
+				Random.Range(-radius, radius),
+				Random.Range(-radius, radius));
+		public static Vector2 RandomCircle(float radius)
+		{
+			Vector2 v;
+			do
+			{
+				v = RandomSquare(1f);
+			} while (v.sqrMagnitude > 1f);
+			return v * radius;
+		}
+
+		#region Visual
 		public static Color ChangeAlpha(Color baseColor, float newAlpha)
 		{
 			baseColor.a = newAlpha;
@@ -43,5 +59,6 @@ namespace BulletBox
 			rectTransform.anchorMin = new Vector2(rectTransform.anchorMin.x, anchorY);
 			rectTransform.anchorMax = new Vector2(rectTransform.anchorMin.x, anchorY);
 		}
+		#endregion
 	}
 }

@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 3281497234920378437}
-  fireRate: 3
-  damage: 1
+  fireRate: 2.5
+  damage: 2
   offset: 0.5
   projectile: {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}

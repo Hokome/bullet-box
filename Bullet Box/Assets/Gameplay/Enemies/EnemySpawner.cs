@@ -6,20 +6,39 @@ namespace BulletBox
 {
     public class EnemySpawner : Spawner
     {
+		public static EnemySpawner Inst { get; private set; }
+
 		[SerializeField] private ParticleSystem spawnParticles;
+		[SerializeField] private Color particlesColor = Color.white;
 
-		public override void Spawn(Spawnable s)	=> StartCoroutine(SpawnDelay(s));
-
-		private IEnumerator SpawnDelay(Spawnable s)
+		private void Awake()
 		{
-			Vector3 spawnPoint = RandomPosition();
-			spawnPoint.z = 1;
+			if (Inst == null)
+			{
+				Inst = this;
+			}
+			else
+			{
+				Debug.LogWarning($"Singleton for {typeof(EnemySpawner)} already exists.");
+				Destroy(gameObject);
+			}
+		}
 
-			Instantiate(spawnParticles).transform.position = spawnPoint;
+		public override void Spawn(Spawnable s, Vector3 pos) => Spawn(s, pos, particlesColor);
+		public void Spawn(Spawnable s, Vector3 pos, Color c) => StartCoroutine(SpawnDelay(s, pos, c));
+
+		private IEnumerator SpawnDelay(Spawnable s, Vector3 pos, Color c)
+		{
+			pos.z = 1;
+			ParticleSystem ps = Instantiate(spawnParticles);
+			ps.transform.position = pos;
+			var trails = ps.trails;
+			trails.colorOverTrail = new ParticleSystem.MinMaxGradient(c);
+
+			pos.z = 0;
 			yield return new WaitForSeconds(spawnParticles.main.duration);
-			spawnPoint.z = 0;
 			s = Instantiate(s);
-			s.transform.position = spawnPoint;
+			s.transform.position = pos;
 		}
 	}
 }
