@@ -934,6 +934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 647130566}
+  - component: {fileID: 647130569}
   - component: {fileID: 647130565}
   - component: {fileID: 647130567}
   - component: {fileID: 647130568}
@@ -1056,6 +1057,18 @@ MonoBehaviour:
   budgetPostpone: 1
   spawnParticles: {fileID: 5371551414120696484, guid: 5674ebc61c4abe84b8dfea77f1d6724b, type: 3}
   particlesColor: {r: 0.61561674, g: 0.5882353, b: 1, a: 1}
+--- !u!114 &647130569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647130564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79424e77422ebdb4a8158b1753c5559f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &841682526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 20
   maxSpeed: 5
-  maxHealth: 10
+  maxHealth: 3
   invincibilityTime: 3
   weapons:
   - {fileID: 3281497234920378442, guid: eacc8e3bd59b48c4ba683d37d6302f64, type: 3}

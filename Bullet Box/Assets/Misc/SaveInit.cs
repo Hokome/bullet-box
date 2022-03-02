@@ -9,6 +9,7 @@ namespace BulletBox.Initialization
 		private void Start()
 		{
 			Directory.CreateDirectory($@"{Application.dataPath}/Save");
+			new Save();
 		}
 	}
 }

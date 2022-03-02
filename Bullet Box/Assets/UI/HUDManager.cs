@@ -1,6 +1,7 @@
 using BulletBox.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,12 +15,14 @@ namespace BulletBox
 		[SerializeField] private DoubleGauge healthBar;
 		[SerializeField] private Image abilityCooldown;
 		[SerializeField] private WeaponHUD[] weapons;
+		[SerializeField] private TMP_Text timer;
 
 		private CanvasGroup main;
-		#endregion
 
 		public DoubleGauge HealthBar => healthBar;
 		public WeaponHUD[] WeaponHUDs => weapons;
+		public TMP_Text Timer => timer;
+		#endregion
 
 		#region Part enabling
 		public void EnableMain(bool value)

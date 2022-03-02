@@ -209,7 +209,7 @@ namespace BulletBox
 		}
 		private void Die()
 		{
-			MainMenu.Inst.LeaveGame();
+			GameManager.Inst.GameOver();
 		}
 
 		private void SetSpriteInvincible(SpriteRenderer sr, bool v)

@@ -31,7 +31,7 @@ namespace BulletBox
 			{
 				HUDManager.Inst.enabled = true;
 				PauseMenu.Inst.enabled = true;
-				//GameMenu.Inst.enabled = true;
+				GameMenu.Inst.enabled = true;
 				enabled = false;
 			});
 		}
@@ -42,7 +42,7 @@ namespace BulletBox
 			{
 				HUDManager.Inst.enabled = false;
 				PauseMenu.Inst.enabled = false;
-				//GameMenu.Inst.enabled = false;
+				GameMenu.Inst.enabled = false;
 				enabled = true;
 			});
 		}
