@@ -9,6 +9,6 @@ namespace BulletBox
 		[SerializeField] private float spawnCooldown = 1;
 		[SerializeField] private float spawnCost;
 		public float SpawnCooldown => spawnCooldown;
-		public float SpawnCost => SpawnCost;
+		public float SpawnCost => spawnCost;
 	}
 }

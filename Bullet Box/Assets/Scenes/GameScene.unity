@@ -1026,9 +1026,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: {x: 20, y: 10}
-  enemies:
+  spawns:
   - {fileID: 9025810857475028917, guid: 934a91b1e349c594986dd20b18c491bd, type: 3}
   initialDelay: 10
+  budgetIncrease: 0
+  budgetFrequency: 0
+  budgetPostpone: 0
 --- !u!114 &647130568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,12 +1045,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: {x: 20, y: 10}
-  enemies:
+  spawns:
   - {fileID: 8981394691902792428, guid: 9073450e1e094cc418f60e85f6066880, type: 3}
   - {fileID: 2805240519365115147, guid: 6cc8c8e5e3d978a40851505713c26d80, type: 3}
   - {fileID: 6928364197282909687, guid: 83c0a90352966b549bb118b431b7bbdb, type: 3}
   - {fileID: 3490301190281803239, guid: b156f084fa2d02045ab968a947a39a57, type: 3}
   initialDelay: 0
+  budgetIncrease: 1
+  budgetFrequency: 1
+  budgetPostpone: 1
   spawnParticles: {fileID: 5371551414120696484, guid: 5674ebc61c4abe84b8dfea77f1d6724b, type: 3}
   particlesColor: {r: 0.61561674, g: 0.5882353, b: 1, a: 1}
 --- !u!1 &841682526

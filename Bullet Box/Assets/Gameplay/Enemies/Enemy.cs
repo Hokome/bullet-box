@@ -32,7 +32,7 @@ namespace BulletBox
 		{
 			flash.enabled = true;
 			yield return new WaitForEndOfFrame();
-			yield return new WaitForSeconds(0.05f);
+			yield return new WaitForSeconds(0.02f);
 			flash.enabled = false;
 		}
 		public virtual void Kill()

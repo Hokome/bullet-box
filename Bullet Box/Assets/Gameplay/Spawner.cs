@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace BulletBox
@@ -7,12 +8,18 @@ namespace BulletBox
     public class Spawner : MonoBehaviour
     {
 		[SerializeField] protected Vector2 spawnRange;
-		[SerializeField] private Spawnable[] enemies;
+		[SerializeField] private Spawnable[] spawns;
 		[SerializeField] private float initialDelay;
+		[SerializeField] private float budgetIncrease;
+		[SerializeField] private float budgetFrequency;
+		[SerializeField] private float budgetPostpone;
+		private float budget;
 
 		private void Start()
 		{
 			StartCoroutine(SpawnRoutine());
+			if (budgetFrequency > 0f)
+				StartCoroutine(BudgetRoutine());
 		}
 
 		private IEnumerator SpawnRoutine()
@@ -20,9 +27,24 @@ namespace BulletBox
 			yield return new WaitForSeconds(initialDelay);
 			while (true)
 			{
-				Spawnable s = enemies[Random.Range(0, enemies.Length)];
+				budget += budgetIncrease;
+				Spawnable s = spawns[Random.Range(0, spawns.Length)];
+				if (s.SpawnCost > budget)
+				{
+					yield return new WaitForSeconds(budgetPostpone);
+				}
+
 				Spawn(s);
+				budget -= s.SpawnCost;
 				yield return new WaitForSeconds(s.SpawnCooldown);
+			}
+		}
+		private IEnumerator BudgetRoutine()
+		{
+			while (true)
+			{
+				budget += budgetIncrease;
+				yield return new WaitForSeconds(budgetFrequency);
 			}
 		}
 
