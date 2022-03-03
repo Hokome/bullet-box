@@ -1053,7 +1053,7 @@ MonoBehaviour:
   - {fileID: 3490301190281803239, guid: b156f084fa2d02045ab968a947a39a57, type: 3}
   initialDelay: 0
   budgetIncrease: 1
-  budgetFrequency: 1
+  budgetFrequency: 2
   budgetPostpone: 1
   spawnParticles: {fileID: 5371551414120696484, guid: 5674ebc61c4abe84b8dfea77f1d6724b, type: 3}
   particlesColor: {r: 0.61561674, g: 0.5882353, b: 1, a: 1}
@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 20
   maxSpeed: 5
-  maxHealth: 3
+  maxHealth: 10
   invincibilityTime: 3
   weapons:
   - {fileID: 3281497234920378442, guid: eacc8e3bd59b48c4ba683d37d6302f64, type: 3}

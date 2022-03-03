@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500mm"
+   height="500mm"
+   viewBox="0 0 500 500"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="mother.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.29672264"
+     inkscape:cx="803.78093"
+     inkscape:cy="999.24967"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         id="path3491" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Tail"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Tail"
+       inkscape:isstock="true">
+      <g
+         transform="scale(-1.2)"
+         id="g3521">
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round"
+           d="M -3.8048674,-3.9585227 0.54352094,0"
+           id="path3509" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round"
+           d="M -1.2866832,-3.9585227 3.0617053,0"
+           id="path3511" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round"
+           d="M 1.3053582,-3.9585227 5.6537466,0"
+           id="path3513" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round"
+           d="M -3.8048674,4.1775838 0.54352094,0.21974226"
+           id="path3515" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round"
+           d="M -1.2866832,4.1775838 3.0617053,0.21974226"
+           id="path3517" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round"
+           d="M 1.3053582,4.1775838 5.6537466,0.21974226"
+           id="path3519" />
+      </g>
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4649"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4647" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.2,0,0,0.2,-0.4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3473" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3476" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#333333;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="path1004-9"
+       cy="217.52837"
+       cx="296.34296"
+       r="85.119789" />
+    <path
+       id="path1372"
+       style="fill:#cccccc;stroke:#333333;stroke-width:37.79527607;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 944.88281 37.794922 A 907.08659 907.08659 0 0 0 37.794922 944.88281 A 907.08659 907.08659 0 0 0 944.88281 1851.9688 A 907.08659 907.08659 0 0 0 1696.9609 1449.998 A 907.08659 907.08659 0 0 0 1851.9688 944.88281 A 907.08659 907.08659 0 0 0 1697.7324 438.99414 A 907.08659 907.08659 0 0 0 944.88281 37.794922 z M 944.88281 340.1582 A 604.72439 604.72439 0 0 1 960.45312 340.35742 A 604.72439 604.72439 0 0 1 976.01172 340.95898 A 604.72439 604.72439 0 0 1 991.55273 341.96094 A 604.72439 604.72439 0 0 1 1007.0605 343.36328 A 604.72439 604.72439 0 0 1 1022.5273 345.16211 A 604.72439 604.72439 0 0 1 1037.9434 347.36133 A 604.72439 604.72439 0 0 1 1053.2969 349.95508 A 604.72439 604.72439 0 0 1 1068.5801 352.94336 A 604.72439 604.72439 0 0 1 1083.7793 356.32422 A 604.72439 604.72439 0 0 1 1098.8887 360.0957 A 604.72439 604.72439 0 0 1 1113.8945 364.25586 A 604.72439 604.72439 0 0 1 1128.7871 368.80078 A 604.72439 604.72439 0 0 1 1143.5586 373.72656 A 604.72439 604.72439 0 0 1 1158.1992 379.03125 A 604.72439 604.72439 0 0 1 1172.6992 384.71094 A 604.72439 604.72439 0 0 1 1187.0469 390.76172 A 604.72439 604.72439 0 0 1 1201.2324 397.18164 A 604.72439 604.72439 0 0 1 1215.25 403.96289 A 604.72439 604.72439 0 0 1 1229.0879 411.10352 A 604.72439 604.72439 0 0 1 1242.7383 418.59961 A 604.72439 604.72439 0 0 1 1256.1895 426.44336 A 604.72439 604.72439 0 0 1 1269.4355 434.63086 A 604.72439 604.72439 0 0 1 1282.4648 443.15625 A 604.72439 604.72439 0 0 1 1295.2715 452.01367 A 604.72439 604.72439 0 0 1 1307.8457 461.19922 A 604.72439 604.72439 0 0 1 1320.1797 470.70508 A 604.72439 604.72439 0 0 1 1332.2637 480.52539 A 604.72439 604.72439 0 0 1 1344.0918 490.6543 A 604.72439 604.72439 0 0 1 1355.6543 501.08398 A 604.72439 604.72439 0 0 1 1366.9453 511.80664 A 604.72439 604.72439 0 0 1 1377.957 522.81836 A 604.72439 604.72439 0 0 1 1388.6797 534.10938 A 604.72439 604.72439 0 0 1 1399.1094 545.67188 A 604.72439 604.72439 0 0 1 1409.2383 557.5 A 604.72439 604.72439 0 0 1 1419.0586 569.58398 A 604.72439 604.72439 0 0 1 1428.5645 581.91797 A 604.72439 604.72439 0 0 1 1437.75 594.49219 A 604.72439 604.72439 0 0 1 1446.6074 607.29883 A 604.72439 604.72439 0 0 1 1455.1328 620.32812 A 604.72439 604.72439 0 0 1 1463.3203 633.57422 A 604.72439 604.72439 0 0 1 1471.1641 647.02539 A 604.72439 604.72439 0 0 1 1477.7344 658.99219 A 604.72439 604.72439 0 0 1 1478.6602 660.67578 A 604.72439 604.72439 0 0 1 1485.8008 674.51367 A 604.72439 604.72439 0 0 1 1492.582 688.53125 A 604.72439 604.72439 0 0 1 1499.002 702.7168 A 604.72439 604.72439 0 0 1 1505.0527 717.06445 A 604.72439 604.72439 0 0 1 1510.7324 731.56445 A 604.72439 604.72439 0 0 1 1516.0371 746.20508 A 604.72439 604.72439 0 0 1 1520.9629 760.97656 A 604.72439 604.72439 0 0 1 1525.5078 775.86914 A 604.72439 604.72439 0 0 1 1529.668 790.87695 A 604.72439 604.72439 0 0 1 1533.4395 805.98438 A 604.72439 604.72439 0 0 1 1536.8203 821.18359 A 604.72439 604.72439 0 0 1 1539.8086 836.4668 A 604.72439 604.72439 0 0 1 1542.4023 851.82031 A 604.72439 604.72439 0 0 1 1544.6016 867.23633 A 604.72439 604.72439 0 0 1 1546.4004 882.70312 A 604.72439 604.72439 0 0 1 1547.8027 898.21289 A 604.72439 604.72439 0 0 1 1548.8047 913.75195 A 604.72439 604.72439 0 0 1 1549.4062 929.31055 A 604.72439 604.72439 0 0 1 1549.6055 944.88281 A 604.72439 604.72439 0 0 1 1547.916 990.07227 A 604.72439 604.72439 0 0 1 1542.8516 1035.0117 A 604.72439 604.72439 0 0 1 1534.4453 1079.4453 A 604.72439 604.72439 0 0 1 1522.7402 1123.127 A 604.72439 604.72439 0 0 1 1507.8047 1165.8125 A 604.72439 604.72439 0 0 1 1489.7207 1207.2617 A 604.72439 604.72439 0 0 1 1477.4453 1230.4844 A 604.72439 604.72439 0 0 1 1468.5879 1247.2441 A 604.72439 604.72439 0 0 1 1444.5293 1285.5352 A 604.72439 604.72439 0 0 1 1417.6738 1321.9219 A 604.72439 604.72439 0 0 1 1388.1758 1356.1992 A 604.72439 604.72439 0 0 1 1356.1992 1388.1758 A 604.72439 604.72439 0 0 1 1321.9219 1417.6738 A 604.72439 604.72439 0 0 1 1285.5352 1444.5293 A 604.72439 604.72439 0 0 1 1247.2441 1468.5879 A 604.72439 604.72439 0 0 1 1207.2617 1489.7207 A 604.72439 604.72439 0 0 1 1165.8125 1507.8047 A 604.72439 604.72439 0 0 1 1123.127 1522.7402 A 604.72439 604.72439 0 0 1 1079.4453 1534.4453 A 604.72439 604.72439 0 0 1 1035.0117 1542.8516 A 604.72439 604.72439 0 0 1 990.07227 1547.916 A 604.72439 604.72439 0 0 1 944.88281 1549.6055 A 604.72439 604.72439 0 0 1 899.69141 1547.916 A 604.72439 604.72439 0 0 1 854.75195 1542.8516 A 604.72439 604.72439 0 0 1 810.31836 1534.4453 A 604.72439 604.72439 0 0 1 766.63672 1522.7402 A 604.72439 604.72439 0 0 1 723.95117 1507.8047 A 604.72439 604.72439 0 0 1 682.50195 1489.7207 A 604.72439 604.72439 0 0 1 642.51953 1468.5879 A 604.72439 604.72439 0 0 1 604.22852 1444.5293 A 604.72439 604.72439 0 0 1 567.8418 1417.6738 A 604.72439 604.72439 0 0 1 533.56445 1388.1758 A 604.72439 604.72439 0 0 1 501.58789 1356.1992 A 604.72439 604.72439 0 0 1 472.08984 1321.9219 A 604.72439 604.72439 0 0 1 445.23438 1285.5352 A 604.72439 604.72439 0 0 1 421.17578 1247.2441 A 604.72439 604.72439 0 0 1 400.04492 1207.2617 A 604.72439 604.72439 0 0 1 381.95898 1165.8125 A 604.72439 604.72439 0 0 1 367.02344 1123.127 A 604.72439 604.72439 0 0 1 355.31836 1079.4453 A 604.72439 604.72439 0 0 1 346.91211 1035.0117 A 604.72439 604.72439 0 0 1 341.84766 990.07227 A 604.72439 604.72439 0 0 1 340.1582 944.88281 A 604.72439 604.72439 0 0 1 341.84766 899.69141 A 604.72439 604.72439 0 0 1 346.91211 854.75195 A 604.72439 604.72439 0 0 1 355.31836 810.31836 A 604.72439 604.72439 0 0 1 367.02344 766.63672 A 604.72439 604.72439 0 0 1 381.95898 723.95117 A 604.72439 604.72439 0 0 1 400.04492 682.50195 A 604.72439 604.72439 0 0 1 421.17578 642.51953 A 604.72439 604.72439 0 0 1 445.23438 604.22852 A 604.72439 604.72439 0 0 1 472.08984 567.8418 A 604.72439 604.72439 0 0 1 501.58789 533.56445 A 604.72439 604.72439 0 0 1 533.56445 501.58789 A 604.72439 604.72439 0 0 1 567.8418 472.08984 A 604.72439 604.72439 0 0 1 604.22852 445.23438 A 604.72439 604.72439 0 0 1 642.51953 421.17578 A 604.72439 604.72439 0 0 1 682.50195 400.04492 A 604.72439 604.72439 0 0 1 723.95117 381.95898 A 604.72439 604.72439 0 0 1 766.63672 367.02344 A 604.72439 604.72439 0 0 1 810.31836 355.31836 A 604.72439 604.72439 0 0 1 854.75195 346.91211 A 604.72439 604.72439 0 0 1 899.69141 341.84766 A 604.72439 604.72439 0 0 1 944.88281 340.1582 z "
+       transform="scale(0.26458333)"
+       inkscape:export-filename="D:\Dev\Repositories\bullet-box\Bullet Box\Assets\Gameplay\Sprites\mother_enemy.png"
+       inkscape:export-xdpi="13.0048"
+       inkscape:export-ydpi="13.0048" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#333333;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="path1004"
+       cx="197.98232"
+       cy="186.63303"
+       r="67.465317" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#333333;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="circle1130"
+       cy="224.46407"
+       cx="226.35562"
+       r="52.963421" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#333333;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="circle1234"
+       cy="274.27487"
+       cx="168.97858"
+       r="47.288769" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#333333;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="circle1316"
+       cy="303.27866"
+       cx="278.05798"
+       r="85.119789" />
+  </g>
+</svg>

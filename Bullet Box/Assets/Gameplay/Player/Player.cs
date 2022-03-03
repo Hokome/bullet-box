@@ -22,6 +22,7 @@ namespace BulletBox
 
 		private float lastAbility = float.NegativeInfinity;
 		private Weapon weapon;
+		private Pickupable pickupable;
 
 		private Camera cam;
 		private PlayerInput input;
@@ -60,6 +61,16 @@ namespace BulletBox
 				SetSpriteInvincible(weapon.Sr, Invincible);
 				weapon.gameObject.SetActive(true);
 				HUDManager.Inst.WeaponHUDs[weaponIndex].Selected = true;
+			}
+		}
+		public Weapon Weapon
+		{
+			get => weapon;
+			set
+			{
+				Destroy(weapon.gameObject);
+				weapons[WeaponIndex] = Instantiate(value, transform);
+				WeaponIndex = WeaponIndex;
 			}
 		}
 		private bool invincible;
@@ -104,12 +115,13 @@ namespace BulletBox
 			}
 
 			WeaponIndex = 1;
-			weaponIndex = 0;
+			WeaponIndex = 0;
 
 			moveAction = input.actions.FindAction("Move");
 			fireAction = input.actions.FindAction("Fire");
 			abilityAction = input.actions.FindAction("Ability");
 			scrollAction = input.actions.FindAction("Scroll");
+			pickupAction = input.actions.FindAction("Pickup");
 		}
 		private void OnEnable()
 		{
@@ -142,6 +154,7 @@ namespace BulletBox
 		private InputAction fireAction;
 		private InputAction abilityAction;
 		private InputAction scrollAction;
+		private InputAction pickupAction;
 
 		private float lastScroll = float.NegativeInfinity;
 
@@ -155,6 +168,8 @@ namespace BulletBox
 				UseAbility(ctx);
 			else if (ctx.action == scrollAction)
 				Scroll(ctx);
+			else if (ctx.action == pickupAction)
+				PickUp(ctx);
 		}
 		private void Move(InputCallback ctx)
 		{
@@ -188,8 +203,26 @@ namespace BulletBox
 			WeaponIndex += delta;
 			lastScroll = Time.time;
 		}
+		private void PickUp(InputCallback ctx)
+		{
+			if (!ctx.performed) return;
+			if (pickupable == null) return;
+
+			pickupable.PickUp(this);
+			pickupable = null;
+		}
 		#endregion
 
+		public void NotifyPickup(Pickupable p, bool enter)
+		{
+			if (enter)
+				pickupable = p;
+			else
+			{
+				if (p == null)
+					pickupable = p;
+			}
+		}
 		public void Hit(float damage)
 		{
 			if (Invincible)
