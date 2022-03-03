@@ -4,15 +4,19 @@ using UnityEngine;
 
 namespace BulletBox
 {
-	public class Gun : FiringWeapon
+	public class Canon : FiringWeapon
 	{
 		[SerializeField] private float damage;
-
+		[SerializeField] private float splashDamage;
 		public override bool Fire()
 		{
 			bool b = base.Fire();
 			if (b)
-				CreateProjectile().damage = damage;
+			{
+				CanonProjectile c = (CanonProjectile)CreateProjectile();
+				c.damage = damage;
+				c.splashDamage = splashDamage;
+			}
 			return b;
 		}
 	}

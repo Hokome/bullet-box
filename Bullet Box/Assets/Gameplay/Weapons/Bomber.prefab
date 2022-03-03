@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3281497234920378436}
   - component: {fileID: 3281497234920378437}
-  - component: {fileID: 3281497234920378442}
+  - component: {fileID: -2473225344988390403}
   m_Layer: 3
-  m_Name: Eagle
+  m_Name: Bomber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0eebad9f332612341a2e659ca57c3dde, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47c71bd4a85f7ce488837c27bfa65d3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3281497234920378442
+--- !u!114 &-2473225344988390403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,11 +92,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3281497234920378439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0c221f77e8e2f4baffff9862e0bc46, type: 3}
+  m_Script: {fileID: 11500000, guid: 1147bb68b762e1e4d8a72315fc4ca1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 3281497234920378437}
-  fireRate: 2.5
-  offset: 0.5
-  projectile: {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+  fireRate: 1
+  offset: 0.1
+  projectile: {fileID: -3027612378896564279, guid: b14d7dcb8f08cfc4dad1aaa1f09cc2ff, type: 3}
   damage: 2
+  splashDamage: 1

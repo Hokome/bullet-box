@@ -8,8 +8,8 @@ namespace BulletBox
 	{
 		[SerializeField] private float speed;
 		[SerializeField] private int pierce = 1;
-		[SerializeField] private LayerMask hitLayer;
-		[SerializeField] private LayerMask obstacleLayer;
+		[SerializeField] protected LayerMask hitLayer;
+		[SerializeField] protected LayerMask obstacleLayer;
 
 		[HideInInspector] public float damage;
 
@@ -27,22 +27,29 @@ namespace BulletBox
 			if (Utility.IsInLayerMask(collision.gameObject.layer, hitLayer))
 			{
 				IHittable hit = collision.GetComponent<IHittable>();
-				if (hits != null)
-				{
-					if (hits.Contains(hit))
-						return;
-					else
-						hits.Add(hit);
-				}
-				hit.Hit(damage);
-				pierce--;
-				if (pierce <= 0)
-					Destroy(gameObject);
+				Hit(hit);
 			}
 			else if (Utility.IsInLayerMask(collision.gameObject.layer, obstacleLayer))
 			{
-				Destroy(gameObject);
 			}
+		}
+		protected virtual void Hit(IHittable hit)
+		{
+			if (hits != null)
+			{
+				if (hits.Contains(hit))
+					return;
+				else
+					hits.Add(hit);
+			}
+			hit.Hit(damage);
+			pierce--;
+			if (pierce <= 0)
+				Destroy(gameObject);
+		}
+		protected virtual void Obstacle()
+		{
+			Destroy(gameObject);
 		}
 	}
 }
