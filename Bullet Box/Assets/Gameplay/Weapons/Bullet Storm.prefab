@@ -46,6 +46,6 @@ MonoBehaviour:
   uses: 2
   damage: 2
   bulletCount: 16
-  totalShots: 3
-  shotsInterval: 0.2
+  totalShots: 6
+  shotsInterval: 0.15
   projectile: {fileID: 8586911541668113167, guid: f1a24ab037dbca8409239ff7aafa1ac4, type: 3}

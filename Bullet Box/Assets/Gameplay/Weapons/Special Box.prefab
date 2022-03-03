@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!58 &2656516873971785622
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
 --- !u!114 &7678098708190363805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.1}
-  m_SizeDelta: {x: 0, y: 0.7}
+  m_SizeDelta: {x: 0, y: 0.65}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6149906253736334686
 CanvasRenderer:
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 74be81de637dc5a4182e2a6964de5693, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec39fc3b27d24b145b9905834c5fab77, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

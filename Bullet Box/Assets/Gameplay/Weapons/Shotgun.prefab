@@ -100,7 +100,7 @@ MonoBehaviour:
   fireRate: 1.5
   offset: 0.1
   projectile: {fileID: 8586911541668113167, guid: 16ba7df4d55ad574a842aabd0bc5fd03, type: 3}
-  shotCount: 3
-  shotAngle: 10
-  innacuracy: 1
+  shotCount: 4
+  shotAngle: 15
+  innacuracy: 2
   damage: 1
