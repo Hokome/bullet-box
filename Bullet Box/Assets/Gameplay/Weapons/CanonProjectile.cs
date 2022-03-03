@@ -12,6 +12,16 @@ namespace BulletBox
 
 		protected override void Hit(IHittable hit)
 		{
+			Explode();
+			base.Hit(hit);
+		}
+		protected override void Obstacle()
+		{
+			Explode();
+			base.Obstacle();
+		}
+		private void Explode()
+		{
 			ParticleSystem ps = Instantiate(explosionParticles);
 			ps.transform.position = transform.position;
 			var main = ps.main;
@@ -22,7 +32,6 @@ namespace BulletBox
 			{
 				c.GetComponent<IHittable>().Hit(splashDamage);
 			}
-			base.Hit(hit);
 		}
 	}
 }

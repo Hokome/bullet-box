@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1147bb68b762e1e4d8a72315fc4ca1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: bomber
   sprite: {fileID: 3281497234920378437}
   fireRate: 1
   offset: 0.1

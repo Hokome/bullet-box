@@ -15,12 +15,14 @@ namespace BulletBox
 		[SerializeField] private DoubleGauge healthBar;
 		[SerializeField] private Image abilityCooldown;
 		[SerializeField] private WeaponHUD[] weapons;
+		[SerializeField] private SpecialHUD specialHUD;
 		[SerializeField] private TMP_Text timer;
 
 		private CanvasGroup main;
 
 		public DoubleGauge HealthBar => healthBar;
 		public WeaponHUD[] WeaponHUDs => weapons;
+		public SpecialHUD SpecialHUD => specialHUD;
 		public TMP_Text Timer => timer;
 		#endregion
 

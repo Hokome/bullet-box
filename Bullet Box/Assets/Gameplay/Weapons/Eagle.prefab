@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0c221f77e8e2f4baffff9862e0bc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: eagle
   sprite: {fileID: 3281497234920378437}
   fireRate: 2.5
   offset: 0.5

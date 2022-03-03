@@ -31,6 +31,7 @@ namespace BulletBox
 			}
 			else if (Utility.IsInLayerMask(collision.gameObject.layer, obstacleLayer))
 			{
+				Obstacle();
 			}
 		}
 		protected virtual void Hit(IHittable hit)

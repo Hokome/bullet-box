@@ -24,7 +24,7 @@ namespace BulletBox
 		{
 			Projectile p = Instantiate(projectile);
 			p.transform.SetPositionAndRotation(
-				transform.position + transform.right * offset,
+				transform.position + transform.right * offset + Vector3.forward,
 				transform.rotation);
 			return p;
 		}

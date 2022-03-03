@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +22,6 @@ namespace BulletBox
 		[SerializeField] private Ability ability;
 
 		private float lastAbility = float.NegativeInfinity;
-		private Weapon weapon;
 		private Pickupable pickupable;
 
 		private Camera cam;
@@ -49,7 +49,7 @@ namespace BulletBox
 			get => weaponIndex;
 			set
 			{
-				SetSpriteInvincible(weapon.Sr, false);
+				SetSpriteInvincible(Weapon.Sr, false);
 				weapons[weaponIndex].gameObject.SetActive(false);
 				HUDManager.Inst.WeaponHUDs[weaponIndex].Selected = false;
 
@@ -57,22 +57,38 @@ namespace BulletBox
 					value += weapons.Count;
 				weaponIndex = value % weapons.Count;
 
-				weapon = weapons[weaponIndex];
-				SetSpriteInvincible(weapon.Sr, Invincible);
-				weapon.gameObject.SetActive(true);
+				SetSpriteInvincible(Weapon.Sr, Invincible);
+				Weapon.gameObject.SetActive(true);
 				HUDManager.Inst.WeaponHUDs[weaponIndex].Selected = true;
 			}
 		}
 		public Weapon Weapon
 		{
-			get => weapon;
+			get => weapons[weaponIndex];
 			set
 			{
-				Destroy(weapon.gameObject);
+				Destroy(Weapon.gameObject);
 				weapons[WeaponIndex] = Instantiate(value, transform);
+				HUDManager.Inst.WeaponHUDs[weaponIndex].Weapon = Weapon;
 				WeaponIndex = WeaponIndex;
 			}
 		}
+
+		private SpecialWeapon special;
+
+		public SpecialWeapon Special
+		{
+			get => special;
+			set
+			{
+				if (special != null)
+					Destroy(special.gameObject);
+				special = Instantiate(value, transform);
+				HUDManager.Inst.SpecialHUD.Special = special;
+			}
+		}
+
+
 		private bool invincible;
 		private bool Invincible
 		{
@@ -81,7 +97,7 @@ namespace BulletBox
 			{
 				invincible = value;
 				SetSpriteInvincible(sr, value);
-				SetSpriteInvincible(weapon.Sr, value);
+				SetSpriteInvincible(Weapon.Sr, value);
 			}
 		}
 
@@ -101,7 +117,6 @@ namespace BulletBox
 			Health = maxHealth;
 			HUDManager.Inst.HealthBar.ForceUpdate();
 
-			weapon = weapons[0];
 			for (int i = 0; i < weapons.Capacity; i++)
 			{
 				if (weapons.Count <= i)
@@ -111,7 +126,6 @@ namespace BulletBox
 				}
 				weapons[i] = Instantiate(weapons[i], transform);
 				HUDManager.Inst.WeaponHUDs[i].Weapon = weapons[i];
-
 			}
 
 			WeaponIndex = 1;
@@ -122,6 +136,9 @@ namespace BulletBox
 			abilityAction = input.actions.FindAction("Ability");
 			scrollAction = input.actions.FindAction("Scroll");
 			pickupAction = input.actions.FindAction("Pickup");
+			specialAction = input.actions.FindAction("Special");
+
+			HUDManager.Inst.SpecialHUD.Special = null;
 		}
 		private void OnEnable()
 		{
@@ -142,10 +159,10 @@ namespace BulletBox
 		{
 			Vector3 point = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 			//Using another variable to cast to Vector2
-			Vector2 direction = point - weapon.transform.position;
-			weapon.transform.right = direction;
+			Vector2 direction = point - Weapon.transform.position;
+			Weapon.transform.right = direction;
 			if (FireInput)
-				weapon.Fire();
+				Weapon.Fire();
 		}
 		#endregion
 
@@ -155,6 +172,7 @@ namespace BulletBox
 		private InputAction abilityAction;
 		private InputAction scrollAction;
 		private InputAction pickupAction;
+		private InputAction specialAction;
 
 		private float lastScroll = float.NegativeInfinity;
 
@@ -170,6 +188,8 @@ namespace BulletBox
 				Scroll(ctx);
 			else if (ctx.action == pickupAction)
 				PickUp(ctx);
+			else if (ctx.action == specialAction)
+				UseSpecial(ctx);
 		}
 		private void Move(InputCallback ctx)
 		{
@@ -211,6 +231,13 @@ namespace BulletBox
 			pickupable.PickUp(this);
 			pickupable = null;
 		}
+		private void UseSpecial(InputCallback ctx)
+		{
+			if (!ctx.performed) return;
+			if (special == null || special.InUse) return;
+
+			special.Use();
+		}
 		#endregion
 
 		public void NotifyPickup(Pickupable p, bool enter)
@@ -223,6 +250,7 @@ namespace BulletBox
 					pickupable = p;
 			}
 		}
+		public bool HasWeapon(Weapon w) => weapons.Any(o => o.ID == w.ID);
 		public void Hit(float damage)
 		{
 			if (Invincible)

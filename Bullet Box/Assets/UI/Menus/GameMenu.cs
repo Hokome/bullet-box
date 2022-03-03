@@ -43,14 +43,22 @@ namespace BulletBox
 			}
 		}
 
+		private LTDescr gameOver;
 		public void GameOver()
 		{
 			timerText.text = HUDManager.Inst.Timer.text;
 			gameOverGroup.blocksRaycasts = true;
-			gameOverGroup.interactable = true;
-			LeanTween.alphaCanvas(gameOverGroup, 1f, 2f)
-				.setOnComplete(() => LeanTween.alpha(menuButton.gameObject, 1f, 1f)
-				.setDelay(2f).setIgnoreTimeScale(true)).setIgnoreTimeScale(true);
+			gameOverGroup.interactable = false;
+
+			gameOver = LeanTween.alphaCanvas(gameOverGroup, 1f, 2f); 
+			gameOver.setOnComplete(() =>
+			{
+				gameOverGroup.interactable = true;
+				gameOver = LeanTween.alphaCanvas(menuButton.GetComponent<CanvasGroup>(), 1f, 1f)
+				.setDelay(2f)
+				.setIgnoreTimeScale(true);
+			});
+			gameOver.setIgnoreTimeScale(true);
 		}
 		protected override void OnEnable()
 		{
@@ -59,7 +67,9 @@ namespace BulletBox
 		}
 		protected override void OnDisable()
 		{
-			base.OnDisable(); 
+			base.OnDisable();
+			if (gameOver != null)
+					LeanTween.cancel(gameOver.uniqueId);
 			Utility.ShowCanvas(gameOverGroup, false);
 		}
 	}

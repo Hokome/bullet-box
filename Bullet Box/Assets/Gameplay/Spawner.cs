@@ -8,12 +8,11 @@ namespace BulletBox
     public class Spawner : MonoBehaviour
     {
 		[SerializeField] protected Vector2 spawnRange;
-		[SerializeField] private Spawnable[] spawns;
+		[SerializeField] protected Spawnable[] spawns;
 		[SerializeField] private float initialDelay;
 		[SerializeField] private float budgetIncrease;
 		[SerializeField] private float budgetFrequency;
-		[SerializeField] private float budgetPostpone;
-		private float budget;
+		protected float budget;
 
 		private void Start()
 		{
@@ -22,16 +21,19 @@ namespace BulletBox
 				StartCoroutine(BudgetRoutine());
 		}
 
+		protected virtual Spawnable Select()
+		{
+			return spawns[Random.Range(0, spawns.Length)];
+		}
 		private IEnumerator SpawnRoutine()
 		{
 			yield return new WaitForSeconds(initialDelay);
 			while (true)
 			{
-				budget += budgetIncrease;
-				Spawnable s = spawns[Random.Range(0, spawns.Length)];
+				Spawnable s = Select();
 				if (s.SpawnCost > budget)
 				{
-					yield return new WaitForSeconds(budgetPostpone);
+					continue;
 				}
 
 				Spawn(s);
@@ -58,9 +60,9 @@ namespace BulletBox
 				Random.Range(-spawnRange.x, spawnRange.x),
 				Random.Range(-spawnRange.y, spawnRange.y));
 
-		private void OnDrawGizmosSelected()
-		{
-			DebugEx.DrawRect(new Rect(-spawnRange, spawnRange * 2), Color.blue);
-		}
+		//private void OnDrawGizmosSelected()
+		//{
+		//	DebugEx.DrawRect(new Rect(-spawnRange, spawnRange * 2), Color.blue);
+		//}
 	}
 }

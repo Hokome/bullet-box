@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a4376c2f0fb7c48857835136633e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnCooldown: 40
+  spawnCooldown: 35
   spawnCost: 0
   maxLifeTime: 30
   amount: 2

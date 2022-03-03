@@ -93,7 +93,7 @@ MonoBehaviour:
   background: {fileID: 8516193819003509742}
   text: {fileID: 6903811965983167104}
   unselectedSprite: {fileID: -8071385592643562197, guid: 77e1620307173a94da95d349f48e20d9, type: 3}
-  selectedSprite: {fileID: -8205318406098852424, guid: 77e1620307173a94da95d349f48e20d9, type: 3}
+  selectedSprite: {fileID: 8668673011524461801, guid: 77e1620307173a94da95d349f48e20d9, type: 3}
   emptySprite: {fileID: 3575008375301810773, guid: 77e1620307173a94da95d349f48e20d9, type: 3}
 --- !u!114 &-7526687696569374991
 MonoBehaviour:
