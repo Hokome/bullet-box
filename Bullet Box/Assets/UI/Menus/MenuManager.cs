@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 //Originally from AssetFactory
 namespace BulletBox.UI
@@ -10,12 +10,12 @@ namespace BulletBox.UI
 	public abstract class MenuManager : MonoBehaviour
     {
 		[SerializeField] protected Menu main;
-		[SerializeField] private InputActionReference backAction;
 
 		protected Menu currentMenu;
 		protected Stack<Menu> navigationStack = new Stack<Menu>();
 		protected bool backEnabled;
 
+		private InputSystemUIInputModule inputModule;
 
 		public Menu CurrentMenu
 		{
@@ -32,16 +32,23 @@ namespace BulletBox.UI
 			set
 			{
 				backEnabled = value;
-				if (backAction == null)
-					return;
 				if (value)
 				{
-					backAction.action.performed += _ => Back();
+					InputModule.cancel.action.performed += _ => Back();
 				}
 				else
 				{
-					backAction.action.performed -= _ => Back();
+					InputModule.cancel.action.performed -= _ => Back();
 				}
+			}
+		}
+		public InputSystemUIInputModule InputModule
+		{
+			get
+			{
+				if (inputModule == null)
+					inputModule = GetComponent<InputSystemUIInputModule>();
+				return inputModule;
 			}
 		}
 

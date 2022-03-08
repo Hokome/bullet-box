@@ -8,13 +8,17 @@ namespace BulletBox
     public class GameManager : MonoSingleton<GameManager>
     {
 		public static TimeSpan CurrentTime => TimeSpan.FromSeconds(Time.time - startTime);
+		public static GameMode GameMode { get; private set; }
+		public static IEnemySpawner enemySpawner;
 		private static float startTime;
 
+		[SerializeField] private GameMode mode;
 		private bool gameEnded;
 
 		private void Start()
 		{
 			startTime = Time.time;
+			GameMode = mode;
 		}
 
 		private void Update()
@@ -29,12 +33,31 @@ namespace BulletBox
 		{
 			Time.timeScale = 0f;
 			gameEnded = true;
-			Save.Current.scores.Add(CurrentTime);
+			if (GameMode == GameMode.Freeplay)
+			{
+				Save.Current.freeplayScores.Add(CurrentTime);
+				Save.Current.Write();
+			}
+
+			HUDManager.Inst.enabled = false;
+			PauseMenu.Inst.enabled = false;
+			GameMenu.Inst.GameOver(false);
+		}
+		public void WinGame()
+		{
+			Time.timeScale = 0f;
+			gameEnded = true;
+			Save.Current.arcadeScores.Add(CurrentTime);
 			Save.Current.Write();
 
 			HUDManager.Inst.enabled = false;
 			PauseMenu.Inst.enabled = false;
-			GameMenu.Inst.GameOver();
+			GameMenu.Inst.GameOver(true);
 		}
+	}
+	public enum GameMode
+	{
+		Arcade,
+		Freeplay
 	}
 }

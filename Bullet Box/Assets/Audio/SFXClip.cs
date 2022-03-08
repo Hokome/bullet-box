@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 namespace BulletBox.Audio
 {
 
-	[CreateAssetMenu(fileName = "sound_effect", menuName = "Audio/SFX", order = 1)]
+	[CreateAssetMenu(fileName = "sound_effect", menuName = "Audio/SFX", order = 215)]
     public class SFXClip : SoundClip
     {
 		public override SoundType Type => SoundType.SFX;

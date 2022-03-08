@@ -29,6 +29,7 @@ namespace BulletBox
 		private SpriteRenderer sr;
 
 		public Vector2 MoveInput { get; private set; }
+		public Vector2 AimInput { get; private set; }
 		public bool FireInput { get; private set; }
 		public Rigidbody2D Rb { get; private set; }
 
@@ -67,7 +68,7 @@ namespace BulletBox
 			get => weapons[weaponIndex];
 			set
 			{
-				Destroy(Weapon.gameObject);
+				Destroy((Object)Weapon.gameObject);
 				weapons[WeaponIndex] = Instantiate(value, transform);
 				HUDManager.Inst.WeaponHUDs[weaponIndex].Weapon = Weapon;
 				WeaponIndex = WeaponIndex;
@@ -106,6 +107,7 @@ namespace BulletBox
 		{
 			base.Awake();
 			input = GetComponent<PlayerInput>();
+			InitializeInput();
 		}
 		private void Start()
 		{
@@ -131,13 +133,6 @@ namespace BulletBox
 			WeaponIndex = 1;
 			WeaponIndex = 0;
 
-			moveAction = input.actions.FindAction("Move");
-			fireAction = input.actions.FindAction("Fire");
-			abilityAction = input.actions.FindAction("Ability");
-			scrollAction = input.actions.FindAction("Scroll");
-			pickupAction = input.actions.FindAction("Pickup");
-			specialAction = input.actions.FindAction("Special");
-
 			HUDManager.Inst.SpecialHUD.Special = null;
 		}
 		private void OnEnable()
@@ -157,9 +152,18 @@ namespace BulletBox
 		}
 		private void Update()
 		{
-			Vector3 point = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-			//Using another variable to cast to Vector2
-			Vector2 direction = point - Weapon.transform.position;
+			if (PauseMenu.IsPaused) return;
+			Vector2 direction;
+			if (input.currentControlScheme != "Gamepad")
+			{
+				Vector3 point = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+				//Using another variable to cast to Vector2
+				direction = point - Weapon.transform.position;
+			}
+			else
+			{
+				direction = AimInput;
+			}
 			Weapon.transform.right = direction;
 			if (FireInput)
 				Weapon.Fire();
@@ -168,40 +172,68 @@ namespace BulletBox
 
 		#region Input
 		private InputAction moveAction;
+		private InputAction aimAction;
 		private InputAction fireAction;
 		private InputAction abilityAction;
 		private InputAction scrollAction;
 		private InputAction pickupAction;
 		private InputAction specialAction;
 
-		private float lastScroll = float.NegativeInfinity;
+		private delegate void InputHandler(InputCallback ctx);
+		private Dictionary<InputAction, InputHandler> actionHandlers;
 
+		private void InitializeInput()
+		{
+			actionHandlers = new Dictionary<InputAction, InputHandler>(8);
+
+			moveAction = input.actions.FindAction("Move");
+			actionHandlers.Add(moveAction, Move);
+
+			aimAction = input.actions.FindAction("Aim");
+			actionHandlers.Add(aimAction, Aim);
+
+			fireAction = input.actions.FindAction("Fire");
+			actionHandlers.Add(fireAction, Fire);
+
+			abilityAction = input.actions.FindAction("Ability");
+			actionHandlers.Add(abilityAction, UseAbility);
+
+			scrollAction = input.actions.FindAction("Scroll");
+			actionHandlers.Add(scrollAction, Scroll);
+
+			pickupAction = input.actions.FindAction("Pickup");
+			actionHandlers.Add(pickupAction, PickUp);
+
+			specialAction = input.actions.FindAction("Special");
+			actionHandlers.Add(specialAction, UseSpecial);
+		}
 		private void ReadInput(InputCallback ctx)
 		{
-			if (ctx.action == moveAction)
-				Move(ctx);
-			else if (ctx.action == fireAction)
-				Fire(ctx);
-			else if (ctx.action == abilityAction)
-				UseAbility(ctx);
-			else if (ctx.action == scrollAction)
-				Scroll(ctx);
-			else if (ctx.action == pickupAction)
-				PickUp(ctx);
-			else if (ctx.action == specialAction)
-				UseSpecial(ctx);
+			if (actionHandlers.TryGetValue(ctx.action, out InputHandler ih))
+				ih(ctx);
 		}
 		private void Move(InputCallback ctx)
 		{
 			MoveInput = ctx.ReadValue<Vector2>();
 			MoveInput = Vector2.ClampMagnitude(MoveInput, 1f);
 		}
+		private void Aim(InputCallback ctx)
+		{
+			Vector2 v = ctx.ReadValue<Vector2>();
+			if (v == Vector2.zero) return;
+			AimInput = v.normalized;
+		}
 		private void Fire(InputCallback ctx)
 		{
 			if (ctx.performed)
+			{
+				HasShot = true;
 				FireInput = true;
+			}
 			else if (ctx.canceled)
+			{
 				FireInput = false;
+			}
 		}
 		private void UseAbility(InputCallback ctx)
 		{
@@ -210,13 +242,16 @@ namespace BulletBox
 			{
 				if (ability.Use(this))
 				{
+					HasUsedAbility = true;
 					HUDManager.Inst.SetAbilityCooldown(ability.Cooldown);
 					lastAbility = Time.time;
 				}
 			}
 		}
+		private float lastScroll = float.NegativeInfinity;
 		private void Scroll(InputCallback ctx)
 		{
+			if (!ctx.performed) return;
 			if (Time.time - lastScroll < 0.1f)
 				return;
 			int delta = (int)Mathf.Sign(ctx.ReadValue<float>());
@@ -236,11 +271,12 @@ namespace BulletBox
 			if (!ctx.performed) return;
 			if (special == null || special.InUse) return;
 
+			HasUsedSpecial = true;
 			special.Use();
 		}
 		#endregion
 
-		public void NotifyPickup(Pickupable p, bool enter)
+		public void NotifyPickupable(Pickupable p, bool enter)
 		{
 			if (enter)
 				pickupable = p;
@@ -250,6 +286,12 @@ namespace BulletBox
 					pickupable = p;
 			}
 		}
+
+		#region Tutorial check
+		public bool HasShot { get; private set; }
+		public bool HasUsedAbility { get; private set; }
+		public bool HasUsedSpecial { get; private set; }
+		#endregion
 		public bool HasWeapon(Weapon w) => weapons.Any(o => o.ID == w.ID);
 		public void Hit(float damage)
 		{

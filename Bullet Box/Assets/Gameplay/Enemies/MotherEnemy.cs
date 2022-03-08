@@ -8,7 +8,7 @@ namespace BulletBox
 	{
 		[SerializeField] private float speed;
 		[Header("Spawning")]
-		[SerializeField] private Enemy child;
+		[SerializeField] private Egg egg;
 		[SerializeField] private float spawnRate;
 		[SerializeField] private float radius;
 		[SerializeField] private Color particlesColor;
@@ -35,8 +35,10 @@ namespace BulletBox
 			while (true)
 			{
 				yield return new WaitForSeconds(spawnRate);
-				Vector2 pos = Utility.RandomCircle(radius) + rb.position;
-				EnemySpawner.Inst.Spawn(child, pos, particlesColor);
+				Egg egg = Instantiate(this.egg);
+				egg.transform.position = transform.position;
+				egg.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
+				egg.transform.Translate(radius, 0f, 0f);
 			}
 		}
 	}

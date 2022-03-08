@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BulletBox
 {
-    public class EnemySpawner : Spawner
+    public class EnemySpawner : Spawner, IEnemySpawner
     {
 		public static EnemySpawner Inst { get; private set; }
 
@@ -13,15 +13,7 @@ namespace BulletBox
 
 		private void Awake()
 		{
-			if (Inst == null)
-			{
-				Inst = this;
-			}
-			else
-			{
-				Debug.LogWarning($"Singleton for {typeof(EnemySpawner)} already exists.");
-				Destroy(gameObject);
-			}
+			GameManager.enemySpawner = this;
 		}
 
 		protected override Spawnable Select()

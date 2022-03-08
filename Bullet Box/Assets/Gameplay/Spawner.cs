@@ -60,9 +60,9 @@ namespace BulletBox
 				Random.Range(-spawnRange.x, spawnRange.x),
 				Random.Range(-spawnRange.y, spawnRange.y));
 
-		//private void OnDrawGizmosSelected()
-		//{
-		//	DebugEx.DrawRect(new Rect(-spawnRange, spawnRange * 2), Color.blue);
-		//}
+		private void OnDrawGizmosSelected()
+		{
+			DebugEx.DrawRect(new Rect(-spawnRange, spawnRange * 2), Color.blue);
+		}
 	}
 }

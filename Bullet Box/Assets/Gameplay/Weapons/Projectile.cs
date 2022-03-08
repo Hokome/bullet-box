@@ -6,12 +6,11 @@ namespace BulletBox
 {
 	public class Projectile : MonoBehaviour
 	{
+		[SerializeField] protected float damage;
 		[SerializeField] private float speed;
 		[SerializeField] private int pierce = 1;
 		[SerializeField] protected LayerMask hitLayer;
 		[SerializeField] protected LayerMask obstacleLayer;
-
-		[HideInInspector] public float damage;
 
 		private List<IHittable> hits;
 

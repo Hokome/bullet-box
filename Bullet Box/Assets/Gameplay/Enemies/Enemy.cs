@@ -5,6 +5,7 @@ using UnityEngine;
 namespace BulletBox
 {
 	[RequireComponent(typeof(Rigidbody2D))]
+	[RequireComponent(typeof(Collider2D))]
 	public abstract class Enemy : Spawnable, IHittable
     {
 		[SerializeField] private SpriteRenderer flash;
@@ -18,6 +19,8 @@ namespace BulletBox
 		{
 			rb = GetComponent<Rigidbody2D>();
 			Health = maxHealth;
+			if (GameManager.GameMode == GameMode.Arcade)
+				LevelSpawner.Inst.NotifySpawn();
 		}
 
 		public virtual void Hit(float damage)
@@ -38,6 +41,8 @@ namespace BulletBox
 		public virtual void Kill()
 		{
 			Destroy(gameObject);
+			if (GameManager.GameMode == GameMode.Arcade)
+				LevelSpawner.Inst.NotifyDeath();
 		}
 	}
 }

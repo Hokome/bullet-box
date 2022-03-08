@@ -401,7 +401,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2
 --- !u!114 &6472437305946410685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnCooldown: 90
   spawnCost: 0
-  weapon: {fileID: 3281497234920378442, guid: f2b0d647059ce994499271a702f5a07d, type: 3}
+  weapon: {fileID: 0}
   text: {fileID: 6472437304247330244}
 --- !u!114 &-7529603571133328975
 MonoBehaviour:

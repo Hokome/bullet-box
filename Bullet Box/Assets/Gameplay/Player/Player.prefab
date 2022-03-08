@@ -222,13 +222,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0598db0d74949f345b4084f139ceb4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 20
-  maxSpeed: 5
+  acceleration: 15
+  maxSpeed: 3
   maxHealth: 10
   invincibilityTime: 3
   weapons:
-  - {fileID: 3281497234920378442, guid: eacc8e3bd59b48c4ba683d37d6302f64, type: 3}
-  - {fileID: 3281497234920378442, guid: bc1657478399aed4eb93b88beb613615, type: 3}
+  - {fileID: 4040938228676482107, guid: eacc8e3bd59b48c4ba683d37d6302f64, type: 3}
+  - {fileID: -2100589380718293776, guid: bc1657478399aed4eb93b88beb613615, type: 3}
   ability: {fileID: 11400000, guid: 81f1e7a12f3e7e2479f8bbe0425b3dcf, type: 2}
 --- !u!114 &6219627286428517167
 MonoBehaviour:

@@ -11,30 +11,36 @@ namespace BulletBox
 		public static readonly string path = $@"{Application.dataPath}/Save/scores.save";
 		public static Save Current { get; private set; }
 
-		public List<TimeSpan> scores;
+		public List<TimeSpan> freeplayScores;
+		public List<TimeSpan> arcadeScores;
 
 		public Save()
 		{
 			Current = this;
 			if (!File.Exists(path))
 			{
-				scores = new List<TimeSpan>();
+				freeplayScores = new List<TimeSpan>();
+				arcadeScores = new List<TimeSpan>();
 				File.Create(path);
 				return;
 			}
 			FileStream stream = new FileStream(path, FileMode.Open);
 			if (stream.Length <= 0)
 			{
-				scores = new List<TimeSpan>();
+				freeplayScores = new List<TimeSpan>();
+				arcadeScores = new List<TimeSpan>();
 				return;
 			}
 			BinaryReader reader = new BinaryReader(stream);
-
-			scores = new List<TimeSpan>(reader.ReadInt32());
-
-			for (int i = 0; i < scores.Capacity; i++)
+			freeplayScores = new List<TimeSpan>(reader.ReadInt32());
+			for (int i = 0; i < freeplayScores.Capacity; i++)
 			{
-				scores.Add(TimeSpan.FromSeconds(reader.ReadSingle()));
+				freeplayScores.Add(TimeSpan.FromSeconds(reader.ReadSingle()));
+			}
+			arcadeScores = new List<TimeSpan>(reader.ReadInt32());
+			for (int i = 0; i < arcadeScores.Capacity; i++)
+			{
+				arcadeScores.Add(TimeSpan.FromSeconds(reader.ReadSingle()));
 			}
 		}
 
@@ -43,10 +49,15 @@ namespace BulletBox
 			FileStream stream = new FileStream(path, FileMode.Truncate);
 			BinaryWriter writer = new BinaryWriter(stream);
 
-			writer.Write(scores.Count);
-			for (int i = 0; i < scores.Count; i++)
+			writer.Write(freeplayScores.Count);
+			for (int i = 0; i < freeplayScores.Count; i++)
 			{
-				writer.Write((float)scores[i].TotalSeconds);
+				writer.Write((float)freeplayScores[i].TotalSeconds);
+			}
+			writer.Write(arcadeScores.Count);
+			for (int i = 0; i < arcadeScores.Count; i++)
+			{
+				writer.Write((float)arcadeScores[i].TotalSeconds);
 			}
 		}
 	}
