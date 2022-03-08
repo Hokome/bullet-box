@@ -10,7 +10,7 @@ namespace BulletBox
     {
 		[SerializeField] private SpriteRenderer flash;
 		[Header("Stats")]
-		[SerializeField] private float maxHealth;
+		[SerializeField] protected float maxHealth;
 
 		protected Rigidbody2D rb;
 		public float Health { get; set; }

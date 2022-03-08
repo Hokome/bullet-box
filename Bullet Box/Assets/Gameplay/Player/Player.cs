@@ -276,7 +276,7 @@ namespace BulletBox
 		}
 		#endregion
 
-		public void NotifyPickupable(Pickupable p, bool enter)
+		public void NotifyPickup(Pickupable p, bool enter)
 		{
 			if (enter)
 				pickupable = p;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3806921192919338391}
   - component: {fileID: 8586911541668113167}
   m_Layer: 7
-  m_Name: MG Projectile
+  m_Name: Boss projectile burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 94f5d60c780483541956f51430b19664, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8790385, g: 0.8160377, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -135,11 +135,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 6
+  speed: 4
   pierce: 1
   hitLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 512

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Machine Gun Pattern
   m_EditorClassIdentifier: 
   projectile: {fileID: 8586911541668113167, guid: 2dc00163936d707439080cf6f0ff91bb, type: 3}
-  fireRate: 3
+  fireRate: 8
   projectileCount: 1
   totalAngle: 0
-  imprecision: 1
-  spacing: 0
-  offset: {x: 0.5, y: 0}
+  imprecision: 4
+  spread: 0
+  offset: {x: 0.5, y: 0, z: 1}
   globalRotation: 0

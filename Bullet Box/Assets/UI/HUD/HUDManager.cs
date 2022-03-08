@@ -12,14 +12,18 @@ namespace BulletBox
 	public class HUDManager : MonoSingleton<HUDManager>
     {
 		#region References
+		[Header("Player")]
 		[SerializeField] private DoubleGauge healthBar;
 		[SerializeField] private Image abilityCooldown;
 		[SerializeField] private WeaponHUD[] weapons;
 		[SerializeField] private SpecialHUD specialHUD;
+		[Space]
 		[SerializeField] private TutorialHUD tutorial;
-		[SerializeField] private TMP_Text timer;
 		[SerializeField] private TMP_Text levelClearedText;
 		[SerializeField] private CanvasGroup levelClearedGroup;
+		[SerializeField] private TMP_Text timer;
+		[Space]
+		[SerializeField] private BossHUD bossHUD;
 
 		private CanvasGroup main;
 
@@ -28,6 +32,7 @@ namespace BulletBox
 		public SpecialHUD SpecialHUD => specialHUD;
 		public TutorialHUD Tutorial => tutorial;
 		public TMP_Text Timer => timer;
+		public BossHUD BossHUD => bossHUD;
 		#endregion
 
 		#region Part enabling
@@ -55,6 +60,7 @@ namespace BulletBox
 		private void OnEnable()
 		{
 			EnableMain(true);
+			BossHUD.Group.alpha = 0f;
 		}
 		private void OnDisable()
 		{

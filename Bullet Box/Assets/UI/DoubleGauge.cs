@@ -25,14 +25,44 @@ namespace BulletBox.UI
 
 		private Slider sub;
 
+		private LTDescr anim;
+		private bool isAnimating;
+		private bool isIncreasing;
+
 		public float Value
 		{
 			get => value;
 			set
 			{
-				ForceUpdate();
-				this.value = value;
-				anim = StartCoroutine(Animate());
+				float newValue = Mathf.Clamp(value, min, max);
+				if (newValue == this.value) return;
+				this.value = newValue;
+
+				bool increasing = this.value > subValue;
+				if (isAnimating)
+				{
+					if (isIncreasing != increasing)
+						ForceUpdate();
+					LeanTween.cancel(anim.uniqueId);
+				}
+				if (increasing)
+				{
+					isIncreasing = true;
+					back.value = value;
+					sub = front;
+					backFill.color = subIncreaseColor;
+				}
+				else
+				{
+					isIncreasing = false;
+					front.value = value;
+					sub = back;
+					backFill.color = subDecreaseColor;
+				}
+
+				isAnimating = true;
+				anim = LeanTween.value(gameObject, UpdateSub, subValue, value, animationTime)
+					.setOnComplete(ForceUpdate);
 			}
 		}
 		public float SubValue
@@ -66,6 +96,17 @@ namespace BulletBox.UI
 			}
 		}
 
+		public void ForceUpdate()
+		{
+			if (isAnimating)
+				LeanTween.cancel(anim.uniqueId);
+			isAnimating = false;
+
+			subValue = value;
+			front.value = value;
+			back.value = value;
+		}
+
 		private void Start() => Init();
 		private void OnValidate() => Init();
 		private void Init()
@@ -83,41 +124,51 @@ namespace BulletBox.UI
 			if (backFill != null)
 				backFill.color = subDecreaseColor;
 		}
-		public void ForceUpdate()
+
+		private void UpdateSub(float val)
 		{
-			if (anim != null)
-				StopCoroutine(anim);
-			subValue = value;
-			front.value = value;
-			back.value = value;
+			SubValue = val;
 		}
 
-		private Coroutine anim;
-		private IEnumerator Animate()
-		{
-			float increment = value - subValue / animationTime;
-			if (value > subValue)
-			{
-				back.value = value;
-				sub = front;
-				backFill.color = subIncreaseColor;
-				while (subValue < value)
-				{
-					SubValue += increment * Time.deltaTime;
-					yield return null;
-				}
-			}
-			else if (value < subValue)
-			{
-				front.value = value;
-				sub = back;
-				backFill.color = subDecreaseColor;
-				while (subValue > value)
-				{
-					SubValue += increment * Time.deltaTime;
-					yield return null;
-				}
-			}
-		}
+		//Old code
+		//private Coroutine anim;
+		//private bool recalculationNeeded;
+		//private float increment;
+		//private IEnumerator Animate()
+		//{
+		//Recalculation:
+		//	float increment = value - subValue / animationTime;
+		//	if (!MathEx.SameSign(increment, this.increment))
+		//		ForceUpdate();
+		//	this.increment = increment;
+		//	recalculationNeeded = false;
+		//	if (value > subValue)
+		//	{
+		//		back.value = value;
+		//		sub = front;
+		//		backFill.color = subIncreaseColor;
+		//		while (subValue < value)
+		//		{
+		//			SubValue += increment * Time.deltaTime;
+		//			yield return null;
+		//			if (recalculationNeeded)
+		//				goto Recalculation;
+		//		}
+		//	}
+		//	else if (value < subValue)
+		//	{
+		//		front.value = value;
+		//		sub = back;
+		//		backFill.color = subDecreaseColor;
+		//		while (subValue > value)
+		//		{
+		//			SubValue += increment * Time.deltaTime;
+		//			yield return null;
+		//			if (recalculationNeeded)
+		//				goto Recalculation;
+		//		}
+		//	}
+		//	anim = null;
+		//}
 	}
 }

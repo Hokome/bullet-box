@@ -13,14 +13,14 @@ namespace BulletBox
 		{
 			if (collision.CompareTag("Player"))
 			{
-				Player.Inst.NotifyPickupable(this, true);
+				Player.Inst.NotifyPickup(this, true);
 			}
 		}
 		private void OnTriggerExit2D(Collider2D collision)
 		{
 			if (collision.CompareTag("Player"))
 			{
-				Player.Inst.NotifyPickupable(this, false);
+				Player.Inst.NotifyPickup(this, false);
 			}
 		}
 	}
