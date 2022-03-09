@@ -2,6 +2,7 @@ using BulletBox.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Originally from AssetFactory
 namespace BulletBox
@@ -9,7 +10,6 @@ namespace BulletBox
     public class MainMenu : MenuManager
     {
 		public static MainMenu Inst { get; private set; }
-
 		private void Awake()
 		{
 			if (Inst == null)
@@ -25,8 +25,13 @@ namespace BulletBox
 			}
 		}
 
-		public void StartGame(int sceneIndex)
+		public void StartGame(int mode)
 		{
+			int sceneIndex;
+			if (!Save.Current.tutorialCompleted)
+				sceneIndex = 2;
+			else
+				sceneIndex = mode == 0 ? 3 : 4;
 			SceneTransitioner.Inst.LoadScene(sceneIndex, delegate
 			{
 				HUDManager.Inst.enabled = true;
@@ -48,12 +53,16 @@ namespace BulletBox
 		}
 		public void QuitGame() => Application.Quit();
 
+		public void SetFreeplayInteractable(Button freeplayButton)
+		{
+			freeplayButton.interactable = Save.Current.tutorialCompleted;
+		}
+
 		protected override void OnEnable()
 		{
 			base.OnEnable();
 			ToMain();
 		}
-
 		protected override void OnDisable()
 		{
 			base.OnDisable();

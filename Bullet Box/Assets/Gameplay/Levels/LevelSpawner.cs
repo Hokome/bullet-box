@@ -12,8 +12,8 @@ namespace BulletBox
 		[SerializeField] private Color particlesColor = Color.white;
 
 		private int levelIndex;
-		private int spawnsLeft;
-		private int enemiesLeft;
+		protected int spawnsLeft;
+		protected int enemiesLeft;
 
 		private Level Level => levels[levelIndex];
 
@@ -33,7 +33,7 @@ namespace BulletBox
 			for (int i = 0; i < Level.waves.Length; i++)
 			{
 				SpawnWave(Level[i]);
-				yield return new WaitUntil(() => spawnsLeft <= 0 && enemiesLeft <= 0);
+				yield return new WaitUntil(WaveCompleted);
 			}
 			levelIndex++;
 			if (levelIndex < levels.Length)
@@ -75,6 +75,7 @@ namespace BulletBox
 			s = Instantiate(s);
 			s.transform.position = pos;
 		}
+		protected bool WaveCompleted() => spawnsLeft <= 0 && enemiesLeft <= 0;
 
 #if UNITY_EDITOR
 		[SerializeField] private int editorGizmosLevel;

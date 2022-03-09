@@ -55,6 +55,7 @@ namespace BulletBox
 			GameMenu.Inst.GameOver(true);
 		}
 	}
+	[System.Serializable]
 	public enum GameMode
 	{
 		Arcade,

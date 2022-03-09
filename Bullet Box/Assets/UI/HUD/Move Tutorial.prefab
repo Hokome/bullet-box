@@ -407,6 +407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Move Tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 6984934987242245258, guid: eac49410860624a4a904ccc878a4d965, type: 3}
+      propertyPath: m_text
+      value: Move
+      objectReference: {fileID: 0}
     - target: {fileID: 6984934987242245261, guid: eac49410860624a4a904ccc878a4d965, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 20

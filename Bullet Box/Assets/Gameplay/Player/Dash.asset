@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   cooldown: 4
-  force: 9
+  force: 12

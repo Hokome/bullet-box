@@ -13,7 +13,6 @@ namespace BulletBox
 			get
 			{
 				if (inst != null) return inst;
-				Debug.Log($"{inst.name}");
 				Debug.LogError($"No instance of the singleton type {typeof(T)} has been registered.");
 				return null;
 			}
