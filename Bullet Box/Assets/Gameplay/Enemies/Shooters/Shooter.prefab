@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnCooldown: 3
   spawnCost: 2
+  spawnChance: 1
   flash: {fileID: 6928364199186577277}
   maxHealth: 10
   acceleration: 10

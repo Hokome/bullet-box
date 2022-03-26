@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!58 &2656516873971785622
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnCooldown: 50
   spawnCost: 0
+  spawnChance: 1
   special: {fileID: 0}
   text: {fileID: 2656516874856133864}
 --- !u!1 &2656516874510663679

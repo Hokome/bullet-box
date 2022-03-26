@@ -178,6 +178,7 @@ namespace BulletBox
 		private InputAction scrollAction;
 		private InputAction pickupAction;
 		private InputAction specialAction;
+		private InputAction pauseAction;
 
 		private delegate void InputHandler(InputCallback ctx);
 		private Dictionary<InputAction, InputHandler> actionHandlers;
@@ -206,6 +207,9 @@ namespace BulletBox
 
 			specialAction = input.actions.FindAction("Special");
 			actionHandlers.Add(specialAction, UseSpecial);
+
+			pauseAction = input.actions.FindAction("Pause");
+			actionHandlers.Add(pauseAction, Pause);
 		}
 		private void ReadInput(InputCallback ctx)
 		{
@@ -273,6 +277,11 @@ namespace BulletBox
 
 			HasUsedSpecial = true;
 			special.Use();
+		}
+		private void Pause(InputCallback ctx)
+		{
+			if (!ctx.performed) return;
+			PauseMenu.Inst.TogglePause();
 		}
 		#endregion
 

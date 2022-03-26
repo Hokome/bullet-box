@@ -228,7 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnCooldown: 5
-  spawnCost: Infinity
+  spawnCost: 20
+  spawnChance: 10
   flash: {fileID: 4293604048158767099}
   maxHealth: 100
   displayName: Boss

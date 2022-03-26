@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Eagle Pattern
   m_EditorClassIdentifier: 
   projectile: {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
-  fireRate: 1.5
+  fireRate: 2
   projectileCount: 1
   totalAngle: 0
   imprecision: 0

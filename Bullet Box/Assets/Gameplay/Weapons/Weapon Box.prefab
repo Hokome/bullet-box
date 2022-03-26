@@ -392,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnCooldown: 90
   spawnCost: 0
+  spawnChance: 1
   weapon: {fileID: 0}
   text: {fileID: 6472437304247330244}
 --- !u!114 &-7529603571133328975

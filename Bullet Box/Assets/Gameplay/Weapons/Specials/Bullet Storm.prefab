@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f6fe87babb0174b9283bdcd1114767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uses: 3
+  uses: 2
   pattern: {fileID: 11400000, guid: cca5b4e0814fab7489691267f779bb5e, type: 2}
-  totalShots: 3
+  totalShots: 6
   shotsInterval: 0.15
+  rotationAngle: 10

@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnCooldown: 40
   spawnCost: 0
+  spawnChance: 1
   maxLifeTime: 40
   amount: 2
 --- !u!114 &7269506625855071679

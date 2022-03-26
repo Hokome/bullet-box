@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Machine Gun Pattern
   m_EditorClassIdentifier: 
   projectile: {fileID: 8586911541668113167, guid: 2dc00163936d707439080cf6f0ff91bb, type: 3}
-  fireRate: 8
+  fireRate: 6.5
   projectileCount: 1
   totalAngle: 0
   imprecision: 4

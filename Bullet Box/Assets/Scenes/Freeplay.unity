@@ -923,9 +923,10 @@ MonoBehaviour:
   spawnRange: {x: 10, y: 6}
   spawns:
   - {fileID: 8981394691902792428, guid: 9073450e1e094cc418f60e85f6066880, type: 3}
-  - {fileID: 2805240519365115147, guid: 6cc8c8e5e3d978a40851505713c26d80, type: 3}
   - {fileID: 6928364197282909687, guid: 83c0a90352966b549bb118b431b7bbdb, type: 3}
+  - {fileID: 287287816282733535, guid: 5f5b84cbb4c8d584a870280c8ba0f3be, type: 3}
   - {fileID: 3490301190281803239, guid: b156f084fa2d02045ab968a947a39a57, type: 3}
+  - {fileID: 4293604048032263662, guid: 75a0fe0664f701841a5e5856f73e3624, type: 3}
   initialDelay: 0
   budgetIncrease: 1
   budgetFrequency: 2
@@ -943,7 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79424e77422ebdb4a8158b1753c5559f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 1
+  mode: 4
 --- !u!114 &647130570
 MonoBehaviour:
   m_ObjectHideFlags: 0

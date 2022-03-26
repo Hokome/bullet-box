@@ -15,6 +15,8 @@ namespace BulletBox
 		protected Rigidbody2D rb;
 		public float Health { get; set; }
 
+		private bool isDead;
+
 		protected virtual void Start()
 		{
 			rb = GetComponent<Rigidbody2D>();
@@ -40,9 +42,13 @@ namespace BulletBox
 		}
 		public virtual void Kill()
 		{
+			if (isDead) return;
+			isDead = true;
 			Destroy(gameObject);
 			if (GameManager.GameMode == GameMode.Arcade)
+			{
 				LevelSpawner.Inst.NotifyDeath();
+			}
 		}
 	}
 }

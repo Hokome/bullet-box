@@ -5,9 +5,8 @@ using UnityEngine;
 
 namespace BulletBox
 {
-
-	[CreateAssetMenu(fileName = "Level 0", menuName = "Level", order = 1)]
-    public class Level : ScriptableObject
+	[Serializable]
+    public class Level
     {
 		public Wave[] waves;
 		public Wave this[int index] => waves[index];
@@ -23,7 +22,7 @@ namespace BulletBox
 			{
 				int ret = 0;
 				foreach (var s in subWaves)
-					ret += s.Spawns.Length;
+					ret += s.Count;
 				return ret;
 			}
 		}
@@ -31,19 +30,21 @@ namespace BulletBox
 	[Serializable]
 	public struct SubWave
 	{
-		[SerializeField] private SpawnData[] spawns;
+		[SerializeField] private Spawnable spawn;
+		[SerializeField] private Transform anchor;
+		[SerializeField] private int count;
+		[Header("Timing")]
 		[SerializeField] private float delay;
 		[SerializeField] private float spacing;
-		public float Spacing => spacing;
-		public float Delay => delay;
-		public SpawnData[] Spawns => spawns;
-	}
-	[Serializable]
-	public struct SpawnData
-	{
-		[SerializeField] private Vector2 position;
-		[SerializeField] private Spawnable spawn;
-		public Vector2 Position => position;
+		[Header("Spread")]
+		[SerializeField] private float radius;
+		[SerializeField] private float minDistance;
 		public Spawnable Spawn => spawn;
+		public Transform Anchor => anchor;
+		public int Count => count;
+		public float Delay => delay;
+		public float Radius => radius;
+		public float Spacing => spacing;
+		public float MinDistance => minDistance;
 	}
 }

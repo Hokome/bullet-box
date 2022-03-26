@@ -42,10 +42,10 @@ namespace BulletBox
 		}
 		public void LeaveGame()
 		{
-			PauseMenu.Inst.Paused = false;
 			SceneTransitioner.Inst.LoadScene(1, delegate
 			{
 				HUDManager.Inst.enabled = false;
+				PauseMenu.Inst.Paused = false;
 				PauseMenu.Inst.enabled = false;
 				GameMenu.Inst.enabled = false;
 				enabled = true;

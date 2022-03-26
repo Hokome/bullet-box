@@ -13,6 +13,7 @@ namespace BulletBox
 		[SerializeField] private float budgetIncrease;
 		[SerializeField] private float budgetFrequency;
 		protected float budget;
+		protected float[] chances;
 
 		private void Start()
 		{
@@ -23,16 +24,30 @@ namespace BulletBox
 
 		protected virtual Spawnable Select()
 		{
-			return spawns[Random.Range(0, spawns.Length)];
+			float selection = Random.Range(0f, chances.Sum());
+			float current = 0f;
+			for (int i = 0; i < chances.Length; i++)
+			{
+				current += chances[i];
+				if (current >= selection)
+					return spawns[i];
+			}
+			return null;
 		}
 		private IEnumerator SpawnRoutine()
 		{
+			chances = new float[spawns.Length];
+			for (int i = 0; i < chances.Length; i++)
+			{
+				chances[i] = spawns[i].SpawnChance;
+			}
 			yield return new WaitForSeconds(initialDelay);
 			while (true)
 			{
 				Spawnable s = Select();
 				if (s.SpawnCost > budget)
 				{
+					yield return null;
 					continue;
 				}
 

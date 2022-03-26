@@ -8,7 +8,7 @@ namespace BulletBox
     public class GameManager : MonoSingleton<GameManager>
     {
 		public static TimeSpan CurrentTime => TimeSpan.FromSeconds(Time.time - startTime);
-		public static GameMode GameMode { get; private set; }
+		public static GameMode GameMode => Inst.mode;
 		public static IEnemySpawner enemySpawner;
 		private static float startTime;
 
@@ -18,7 +18,6 @@ namespace BulletBox
 		private void Start()
 		{
 			startTime = Time.time;
-			GameMode = mode;
 		}
 
 		private void Update()
@@ -55,10 +54,9 @@ namespace BulletBox
 			GameMenu.Inst.GameOver(true);
 		}
 	}
-	[System.Serializable]
 	public enum GameMode
 	{
-		Arcade,
-		Freeplay
+		Arcade = 3,
+		Freeplay = 4
 	}
 }

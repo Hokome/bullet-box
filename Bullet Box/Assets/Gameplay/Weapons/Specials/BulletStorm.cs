@@ -9,6 +9,7 @@ namespace BulletBox
 		[SerializeField] private ProjectilePattern pattern;
 		[SerializeField] private int totalShots;
 		[SerializeField] private float shotsInterval;
+		[SerializeField] private float rotationAngle;
 
 		public bool CanShoot => true;
 
@@ -31,6 +32,7 @@ namespace BulletBox
 			{
 				StartCoroutine(pattern.ShootOnce(this));
 				yield return new WaitForSeconds(shotsInterval);
+				transform.Rotate(0f, 0f, rotationAngle);
 			}
 			InUse = false;
 			if (Uses <= 0)

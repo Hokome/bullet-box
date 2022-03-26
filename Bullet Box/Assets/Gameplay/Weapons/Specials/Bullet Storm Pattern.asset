@@ -17,6 +17,6 @@ MonoBehaviour:
   projectileCount: 16
   totalAngle: 360
   imprecision: 0
-  spacing: 0
-  offset: {x: 0.5, y: 0}
-  globalRotation: 1
+  spread: 0
+  offset: {x: 0.5, y: 0, z: 1}
+  globalRotation: 0

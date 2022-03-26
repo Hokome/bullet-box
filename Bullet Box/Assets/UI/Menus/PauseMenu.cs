@@ -1,6 +1,5 @@
 using BulletBox.UI;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,8 +10,6 @@ namespace BulletBox
 	{
 		public static PauseMenu Inst { get; private set; }
 		public static bool IsPaused => Inst.Paused;
-
-		[SerializeField] private InputActionReference pauseAction;
 
 		private bool paused;
 		public bool Paused
@@ -71,18 +68,17 @@ namespace BulletBox
 			}
 		}
 
-
-		protected override void OnEnable()
-		{
-			pauseAction.action.performed += _ => TogglePause();
-			base.OnEnable();
-		}
-		protected override void OnDisable()
-		{
-			if (CurrentMenu != null)
-				CurrentMenu.Display(false);
-			pauseAction.action.performed -= _ => TogglePause();
-			base.OnDisable();
-		}
+		//protected override void OnEnable()
+		//{
+		//	pauseAction.performed += _ => TogglePause();
+		//	base.OnEnable();
+		//}
+		//protected override void OnDisable()
+		//{
+		//	if (CurrentMenu != null)
+		//		CurrentMenu.Display(false);
+		//	pauseAction.performed -= _ => TogglePause();
+		//	base.OnDisable();
+		//}
 	}
 }

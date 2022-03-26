@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00eaff0e913d51d448fb84e934fa9cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 2
   speed: 6
   pierce: 1
   hitLayer:
@@ -143,6 +143,6 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 512
-  splashDamage: 1
+  splashDamage: 2
   explosionRadius: 1
   explosionParticles: {fileID: 4857965023199512958, guid: 577074a8bcb01a248a0cdad6edf8c7e1, type: 3}

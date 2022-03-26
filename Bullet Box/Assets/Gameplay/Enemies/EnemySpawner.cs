@@ -16,14 +16,6 @@ namespace BulletBox
 			GameManager.enemySpawner = this;
 		}
 
-		protected override Spawnable Select()
-		{
-			Spawnable s = base.Select();
-			DebugEx.SetElement(0, budget);
-			DebugEx.SetElement(1, $"s: {s.name}, c:{s.SpawnCost}");
-			return s;
-		}
-
 		public override void Spawn(Spawnable s, Vector3 pos) => Spawn(s, pos, particlesColor);
 		public void Spawn(Spawnable s, Vector3 pos, Color c) => StartCoroutine(SpawnDelay(s, pos, c));
 

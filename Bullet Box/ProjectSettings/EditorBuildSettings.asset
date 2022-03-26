@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arcade.unity
     guid: 522524bf5f1ec524e866877b4f100474
-  - enabled: 0
-    path: Assets/Scenes/TestScene.unity
-    guid: 4dbcfe3cb817f32428a65e2a13d14951
   - enabled: 1
     path: Assets/Scenes/Freeplay.unity
     guid: e9c9b258948a1c547841db149b99d4b1
+  - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+    guid: 4dbcfe3cb817f32428a65e2a13d14951
   m_configObjects: {}
