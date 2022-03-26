@@ -908,6 +908,8 @@ MonoBehaviour:
   initialDelay: 10
   budgetIncrease: 0
   budgetFrequency: 0
+  budgetBurst: 0
+  budgetBurstCooldown: Infinity
 --- !u!114 &647130568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,6 +932,8 @@ MonoBehaviour:
   initialDelay: 0
   budgetIncrease: 1
   budgetFrequency: 2
+  budgetBurst: 32
+  budgetBurstCooldown: 120
   spawnParticles: {fileID: 5371551414120696484, guid: 5674ebc61c4abe84b8dfea77f1d6724b, type: 3}
   particlesColor: {r: 0.61561674, g: 0.5882353, b: 1, a: 1}
 --- !u!114 &647130569
@@ -966,6 +970,8 @@ MonoBehaviour:
   initialDelay: 20
   budgetIncrease: 0
   budgetFrequency: 0
+  budgetBurst: 0
+  budgetBurstCooldown: Infinity
 --- !u!114 &647130571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,6 +990,8 @@ MonoBehaviour:
   initialDelay: 60
   budgetIncrease: 0
   budgetFrequency: 0
+  budgetBurst: 0
+  budgetBurstCooldown: Infinity
 --- !u!4 &841682528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6219627286428517162, guid: b9a4f5754b72f314c8db963f35e31325, type: 3}

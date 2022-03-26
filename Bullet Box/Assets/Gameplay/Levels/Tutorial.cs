@@ -54,7 +54,7 @@ namespace BulletBox
 			yield return new WaitForSeconds(2f);
 			hud.Display(hud.End, false);
 
-			MainMenu.Inst.StartGame(0);
+			MainMenu.Inst.StartGame(1);
 		}
 	}
 }

@@ -55,7 +55,7 @@ namespace BulletBox
 
 		public void SetFreeplayInteractable(Button freeplayButton)
 		{
-			freeplayButton.interactable = Save.Current.tutorialCompleted;
+			//freeplayButton.interactable = Save.Current.tutorialCompleted;
 		}
 
 		protected override void OnEnable()

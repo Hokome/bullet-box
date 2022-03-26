@@ -12,6 +12,8 @@ namespace BulletBox
 		[SerializeField] private float initialDelay;
 		[SerializeField] private float budgetIncrease;
 		[SerializeField] private float budgetFrequency;
+		[SerializeField] private float budgetBurst;
+		[SerializeField] private float budgetBurstCooldown = Mathf.Infinity;
 		protected float budget;
 		protected float[] chances;
 
@@ -56,11 +58,20 @@ namespace BulletBox
 				yield return new WaitForSeconds(s.SpawnCooldown);
 			}
 		}
+		private float lastBurst;
 		private IEnumerator BudgetRoutine()
 		{
 			while (true)
 			{
-				budget += budgetIncrease;
+				if (Time.time - lastBurst >= budgetBurstCooldown)
+				{
+					budget += budgetBurst;
+					lastBurst = Time.time;
+				}
+				else
+				{
+					budget += budgetIncrease;
+				}
 				yield return new WaitForSeconds(budgetFrequency);
 			}
 		}
