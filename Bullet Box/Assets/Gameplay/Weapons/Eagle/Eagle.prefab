@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 0eebad9f332612341a2e659ca57c3dde, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3877545a99b749f4aa2ca9671c080b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: eagle
-  pattern: {fileID: 11400000, guid: d5e6faf422b44d1499eb74cc2e94604e, type: 2}
-  sprite: {fileID: 3281497234920378437}
+  id: Eagle
+  icon: {fileID: 21300000, guid: d0999335f2722c14382da7c7d73882cf, type: 3}
+  levelsPath: Assets/Gameplay/Weapons/Eagle/eagle_stats.csv
+  projectile: {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}

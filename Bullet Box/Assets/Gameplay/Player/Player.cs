@@ -17,21 +17,26 @@ namespace BulletBox
 		[SerializeField] private float maxSpeed = 1f;
 		[SerializeField] private float maxHealth = 5f;
 		[SerializeField] private float invincibilityTime = 3f;
-
+		[Space]
 		[SerializeField] private List<Weapon> weapons;
 		[SerializeField] private Ability ability;
+		[Space]
+		[SerializeField] private string levelsPath;
 
 		private float lastAbility = float.NegativeInfinity;
 		private Pickupable pickupable;
+		private CSVReader levels;
 
 		private Camera cam;
 		private PlayerInput input;
 		private SpriteRenderer sr;
 
+		#region Auto Props
 		public Vector2 MoveInput { get; private set; }
 		public Vector2 AimInput { get; private set; }
 		public bool FireInput { get; private set; }
 		public Rigidbody2D Rb { get; private set; }
+		#endregion
 
 		private float health;
 		public float Health
@@ -68,15 +73,15 @@ namespace BulletBox
 			get => weapons[weaponIndex];
 			set
 			{
-				Destroy((Object)Weapon.gameObject);
+				Destroy(Weapon.gameObject);
 				weapons[WeaponIndex] = Instantiate(value, transform);
 				HUDManager.Inst.WeaponHUDs[weaponIndex].Weapon = Weapon;
 				WeaponIndex = WeaponIndex;
 			}
 		}
+		public Weapon[] Weapons => weapons.ToArray();
 
 		private SpecialWeapon special;
-
 		public SpecialWeapon Special
 		{
 			get => special;
@@ -88,7 +93,6 @@ namespace BulletBox
 				HUDManager.Inst.SpecialHUD.Special = special;
 			}
 		}
-
 
 		private bool invincible;
 		private bool Invincible
@@ -102,12 +106,65 @@ namespace BulletBox
 			}
 		}
 
+		private int experience;
+		public int Experience
+		{
+			get => experience;
+			set
+			{
+				if (isMaxLevel) return;
+
+				experience = value;
+				HUDManager.Inst.Experience.Value = experience;
+				if (experience >= nextLevel)
+				{
+					Level++;
+				}
+			}
+		}
+
+		private int nextLevel;
+		private int level;
+		private int Level
+		{
+			get => level;
+			set
+			{
+				level = value;
+				if (level > 1)
+				{
+					LevelUp();
+				}
+
+				nextLevel = levels.ReadInt("Experience", level);
+				GameManager.Difficulty = levels.ReadFloat("Difficulty", level);
+				if (level == levels.height - 1)
+				{
+					isMaxLevel = true;
+					HUDManager.Inst.Experience.Max = 1;
+					HUDManager.Inst.Experience.Value = 1;
+					HUDManager.Inst.Experience.ForceUpdate();
+				}
+				else
+				{
+					HUDManager.Inst.Experience.Max = nextLevel;
+					Experience = 0;
+				}
+			}
+		}
+		private bool isMaxLevel = false;
+
 		#region Messages
 		protected override void Awake()
 		{
 			base.Awake();
 			input = GetComponent<PlayerInput>();
 			InitializeInput();
+
+			levels = new CSVReader(levelsPath);
+			GameManager.Inst.MaxLevel = levels.height - 1;
+			Level = 1;
+			HUDManager.Inst.Experience.ForceUpdate();
 		}
 		private void Start()
 		{
@@ -152,7 +209,7 @@ namespace BulletBox
 		}
 		private void Update()
 		{
-			if (PauseMenu.IsPaused) return;
+			if (Time.timeScale <= 0f) return;
 			Vector2 direction;
 			if (input.currentControlScheme != "Gamepad")
 			{
@@ -295,6 +352,11 @@ namespace BulletBox
 					pickupable = p;
 			}
 		}
+		private void LevelUp()
+		{
+			Time.timeScale = 0f;
+			GameMenu.Inst.LevelUp();
+		}
 
 		#region Tutorial check
 		public bool HasShot { get; private set; }
@@ -302,6 +364,14 @@ namespace BulletBox
 		public bool HasUsedSpecial { get; private set; }
 		#endregion
 		public bool HasWeapon(Weapon w) => weapons.Any(o => o.ID == w.ID);
+		public void SetWeapon(int index, Weapon weaponChoice)
+		{
+			Destroy(weapons[index].gameObject);
+			weapons[index] = Instantiate(weaponChoice, transform);
+			HUDManager.Inst.WeaponHUDs[weaponIndex].Weapon = Weapon;
+			WeaponIndex = index;
+		}
+
 		public void Hit(float damage)
 		{
 			if (Invincible)
@@ -323,10 +393,9 @@ namespace BulletBox
 		{
 			GameManager.Inst.GameOver();
 		}
-
 		private void SetSpriteInvincible(SpriteRenderer sr, bool v)
 		{
 			sr.color = Utility.ChangeAlpha(sr.color, v ? 0.5f : 1f);
 		}
-	}
+ 	}
 }

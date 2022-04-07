@@ -7,6 +7,8 @@ namespace BulletBox
     public class VirtualBossShooter : MonoBehaviour, IShooter
     {
 		[SerializeField] private float rotationSpeed;
+		[SerializeField] private float damage;
+		[SerializeField] private float speed;
 		[SerializeField] private ProjectilePattern pattern;
 
 		private Boss boss;
@@ -21,6 +23,10 @@ namespace BulletBox
 		private void Start()
 		{
 			boss = GetComponentInParent<Boss>();
+			pattern.projectile = Instantiate(pattern.projectile, transform);
+			pattern.projectile.damage = damage;
+			pattern.projectile.speed = speed;
+
 			StartCoroutine(pattern.StartPattern(this));
 		}
 

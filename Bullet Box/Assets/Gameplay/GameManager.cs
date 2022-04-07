@@ -9,11 +9,15 @@ namespace BulletBox
     {
 		public static TimeSpan CurrentTime => TimeSpan.FromSeconds(Time.time - startTime);
 		public static GameMode GameMode => Inst.mode;
+		public static float Difficulty { get; set; } = 1f;
 		public static IEnemySpawner enemySpawner;
 		private static float startTime;
 
 		[SerializeField] private GameMode mode;
+		public List<Weapon> weaponsList;
 		private bool gameEnded;
+
+		public int MaxLevel { get; set; }
 
 		private void Start()
 		{

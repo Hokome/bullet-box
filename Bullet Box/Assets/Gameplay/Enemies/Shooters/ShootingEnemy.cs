@@ -21,6 +21,8 @@ namespace BulletBox
 		[SerializeField] private Transform weaponTransform;
 		[SerializeField] private AimType aimType;
 		[SerializeField] private ProjectilePattern projectilePattern;
+		[SerializeField] private float projectileDamage;
+		[SerializeField] private float projectileSpeed;
 
 		private float c_sqrMinDist;
 		private float c_sqrMaxDist;
@@ -34,6 +36,11 @@ namespace BulletBox
 		{
 			c_sqrMinDist = minDist * minDist;
 			c_sqrMaxDist = maxDist * maxDist;
+
+			projectilePattern.projectile = Instantiate(projectilePattern.projectile, transform);
+			projectilePattern.projectile.damage = projectileDamage;
+			projectilePattern.projectile.speed = projectileSpeed;
+
 			StartCoroutine(projectilePattern.StartPattern(this));
 		}
 

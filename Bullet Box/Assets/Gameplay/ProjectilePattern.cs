@@ -4,57 +4,50 @@ using UnityEngine;
 
 namespace BulletBox
 {
-	[CreateAssetMenu(fileName = "New Projectile Pattern", menuName = "Projectile Pattern", order = 1)]
-    public class ProjectilePattern : ScriptableObject
+	[System.Serializable]
+    public class ProjectilePattern
     {
-		[SerializeField] private Projectile projectile;
-		[SerializeField] private float fireRate = 1f;
-		[SerializeField] private int projectileCount = 1;
-		[SerializeField] private float totalAngle = 0f;
-		[SerializeField] private float imprecision = 0f;
-		[SerializeField] private float spread = 0f;
-		[SerializeField] private Vector3 offset = new Vector3(0.5f, 0f, 1f);
-		[SerializeField] private bool globalRotation = false;
-
-		public Projectile Projectile => projectile;
-		public float FireRate => fireRate;
-		public int ProjectileCount => projectileCount;
-		public float TotalAngle => totalAngle;
-		public float Imprecision => imprecision;
-		public float Spread => spread;
-		public Vector2 Offset => offset;
-		public bool GlobalRotation => globalRotation;
+		public Projectile projectile;
+		public float fireRate = 1f;
+		public int projectileCount = 1;
+		public float totalAngle = 0f;
+		public float imprecision = 0f;
+		public float spread = 0f;
+		public Vector2 offset = new Vector2(0.5f, 0f);
+		public bool globalRotation = false;
 
 		public IEnumerator StartPattern(IShooter shooter)
 		{
 			while (true)
 			{
-				yield return new WaitForSeconds(shooter.AttackSpeed / FireRate);
+				yield return new WaitForSeconds(shooter.AttackSpeed / fireRate);
 				shooter.Behaviour.StartCoroutine(ShootOnce(shooter));
 			}
 		}
 		public IEnumerator ShootOnce(IShooter shooter)
 		{
-			float increment = TotalAngle / ProjectileCount;
-			float startAngle = -TotalAngle / 2f;
+			float increment = totalAngle / projectileCount;
+			float startAngle = -totalAngle / 2f;
 			float spacing = 0f;
-			if (Spread > 0f)
-				 spacing = Spread / ProjectileCount;
-			for (int i = 0; i < ProjectileCount; i++)
+			if (spread > 0f)
+				 spacing = spread / projectileCount;
+			for (int i = 0; i < projectileCount; i++)
 			{
 				if (!shooter.CanShoot)
 					yield return new WaitUntil(() => shooter.CanShoot);
-				Projectile p = Instantiate(Projectile);
+				Projectile p = Object.Instantiate(projectile);
 				p.transform.position = shooter.Transform.position;
-				if (!GlobalRotation)
+				if (!globalRotation)
 					p.transform.rotation = shooter.Transform.rotation;
-				p.transform.Rotate(0f, 0f, startAngle + (i * increment) + Random.Range(-Imprecision, Imprecision));
+				p.transform.Rotate(0f, 0f, startAngle + (i * increment) + Random.Range(-imprecision, imprecision));
 				p.transform.Translate(offset);
+				p.gameObject.SetActive(true);
 				if (spacing > 0f)
 					yield return new WaitForSeconds(spacing / shooter.AttackSpeed);
 			}
 		}
 	}
+	// This interface enables the Projectile Pattern class to get context about the object that is shooting the projectile
 	public interface IShooter
 	{
 		bool CanShoot { get; }

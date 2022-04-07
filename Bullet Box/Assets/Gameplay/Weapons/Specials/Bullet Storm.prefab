@@ -44,7 +44,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uses: 2
-  pattern: {fileID: 11400000, guid: cca5b4e0814fab7489691267f779bb5e, type: 2}
+  pattern:
+    projectile: {fileID: 8586911541668113167, guid: f1a24ab037dbca8409239ff7aafa1ac4, type: 3}
+    fireRate: 0
+    projectileCount: 16
+    totalAngle: 360
+    imprecision: 0
+    spread: 0
+    offset: {x: 0.5, y: 0}
+    globalRotation: 0
   totalShots: 6
   shotsInterval: 0.15
   rotationAngle: 10

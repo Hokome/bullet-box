@@ -6,12 +6,14 @@ namespace BulletBox
 {
 	public class Projectile : MonoBehaviour
 	{
-		[SerializeField] protected float damage;
-		[SerializeField] private float speed;
-		[SerializeField] private int pierce = 1;
+		[HideInInspector] public float damage;
+		[HideInInspector] public float speed;
+		[HideInInspector] public float range;
+		[HideInInspector] public int pierce = 1;
 		[SerializeField] protected LayerMask hitLayer;
 		[SerializeField] protected LayerMask obstacleLayer;
 
+		//Used to avoid hitting the same object twice
 		private List<IHittable> hits;
 
 		private void Start()
@@ -19,6 +21,20 @@ namespace BulletBox
 			if (pierce > 1)
 				hits = new List<IHittable>(pierce);
 			GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+		}
+
+		private void OnEnable()
+		{
+			if (range > 0)
+				Destroy(gameObject, range / speed);
+		}
+
+		public virtual void SetLevel(int level, CSVReader table)
+		{
+			damage = table.ReadFloat("Damage", level);
+			speed = table.ReadFloat("Speed", level);
+			range = table.ReadFloat("Range", level);
+			pierce = table.ReadInt("Pierce", level);
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)

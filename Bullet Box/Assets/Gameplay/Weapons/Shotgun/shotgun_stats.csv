@@ -1,0 +1,5 @@
+Level,Description,Damage,Speed,Pierce,Fire rate,P Count,Total Angle,Imprecision,Spread,Range
+1,Fire multiple bullets at once for every shot.,2,6,1,1,3,25,5,0,4
+2,Fire rate up,2,6,1,1.3,3,25,5,0,4
+3,Bullet count up,2,6,1,1.3,4,30,5,0,4
+4,Range and bullet speed up,2,7,1,1.3,4,30,5,0,5

@@ -65,6 +65,7 @@ namespace BulletBox.UI
 			navigationStack.Clear();
 
 			if (!isActiveAndEnabled) return;
+			if (CurrentMenu != null) CurrentMenu.Display(false);
 			CurrentMenu = menu;
 		}
 		/// <summary>

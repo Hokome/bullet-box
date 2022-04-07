@@ -6,21 +6,28 @@ namespace BulletBox
 {
     public class ExplosiveProjectile : Projectile
     {
-		[SerializeField] private float splashDamage;
-		[SerializeField] private float explosionRadius;
 		[SerializeField] private ParticleSystem explosionParticles;
+		
+		[HideInInspector] public float splashDamage;
+		[HideInInspector] public float explosionRadius;
 
+		//Prevents multiple explosions if the projectile enters collision with multiple objects at once.
 		private bool exploded = false;
 
+		public override void SetLevel(int level, CSVReader table)
+		{
+			base.SetLevel(level, table);
+			explosionRadius = table.ReadFloat("E Radius", level);
+			splashDamage = table.ReadFloat("E Damage", level);
+		}
 		protected override void Hit(IHittable hit)
 		{
 			Explode();
 			base.Hit(hit);
 		}
-		protected override void Obstacle()
+		private void OnDestroy()
 		{
 			Explode();
-			base.Obstacle();
 		}
 		private void Explode()
 		{

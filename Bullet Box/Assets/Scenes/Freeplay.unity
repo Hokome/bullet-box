@@ -811,7 +811,6 @@ GameObject:
   - component: {fileID: 647130569}
   - component: {fileID: 647130565}
   - component: {fileID: 647130567}
-  - component: {fileID: 647130570}
   - component: {fileID: 647130568}
   - component: {fileID: 647130571}
   m_Layer: 9
@@ -934,6 +933,7 @@ MonoBehaviour:
   budgetFrequency: 2
   budgetBurst: 32
   budgetBurstCooldown: 120
+  expPrefab: {fileID: 8134024974021772403, guid: 17f5e520d745690418a67d321cc46596, type: 3}
   spawnParticles: {fileID: 5371551414120696484, guid: 5674ebc61c4abe84b8dfea77f1d6724b, type: 3}
   particlesColor: {r: 0.61561674, g: 0.5882353, b: 1, a: 1}
 --- !u!114 &647130569
@@ -949,29 +949,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 4
---- !u!114 &647130570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647130564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a59b00e64451a46982817139efddae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnRange: {x: 10, y: 6}
-  spawns:
-  - {fileID: 1507593534175932032, guid: 0e4351b9d474cc6488b68af09ccb4573, type: 3}
-  - {fileID: 1507593534175932032, guid: 6d4d45fdd8a5c9e40973b330a4ac00f6, type: 3}
-  - {fileID: 1507593534175932032, guid: 80dbfb47db54c644691c5bcbfb293935, type: 3}
-  - {fileID: 1507593534175932032, guid: 98ddb48fcbb222c42ab85d5a48a3c3fb, type: 3}
-  initialDelay: 20
-  budgetIncrease: 0
-  budgetFrequency: 0
-  budgetBurst: 0
-  budgetBurstCooldown: Infinity
+  difficultyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 1.0056281
+      outSlope: 1.0056281
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9808976
+      value: 1.9864182
+      inSlope: 1.0056281
+      outSlope: 1.0056281
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  weaponsList:
+  - {fileID: 3993956374973933346, guid: 221af59ae5c955544becf37afd70d256, type: 3}
+  - {fileID: 4040938228676482107, guid: eacc8e3bd59b48c4ba683d37d6302f64, type: 3}
+  - {fileID: -1431642764179400997, guid: bc1657478399aed4eb93b88beb613615, type: 3}
+  - {fileID: 3622509862859952353, guid: b5fe54c60785c5b43aa42594aa8a9705, type: 3}
 --- !u!114 &647130571
 MonoBehaviour:
   m_ObjectHideFlags: 0

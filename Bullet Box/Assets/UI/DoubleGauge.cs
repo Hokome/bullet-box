@@ -113,8 +113,12 @@ namespace BulletBox.UI
 		{
 			if (front != null)
 				front.value = value;
+			else
+				return;
 			if (back != null)
 				back.value = subValue;
+			else
+				return;
 			
 			Min = min;
 			Max = max;

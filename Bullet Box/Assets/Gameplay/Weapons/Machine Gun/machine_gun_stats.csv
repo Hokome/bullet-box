@@ -1,0 +1,5 @@
+Level,Description,Damage,Speed,Pierce,Fire rate,P Count,Total Angle,Imprecision,Spread,Range
+1,Shoots bullets with low damage but in fast succession,1,6,1,6,1,0,4,0,4.5
+2,Range up,1,6,1,6,1,0,4,0,5
+3,Fire rate up,1,6,1,6.5,1,0,4,0,5
+4,Damage up,1.4,6,1,6.5,1,0,4,0,5

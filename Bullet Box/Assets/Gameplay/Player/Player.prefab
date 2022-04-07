@@ -228,8 +228,9 @@ MonoBehaviour:
   invincibilityTime: 3
   weapons:
   - {fileID: 4040938228676482107, guid: eacc8e3bd59b48c4ba683d37d6302f64, type: 3}
-  - {fileID: -2100589380718293776, guid: bc1657478399aed4eb93b88beb613615, type: 3}
+  - {fileID: -1431642764179400997, guid: bc1657478399aed4eb93b88beb613615, type: 3}
   ability: {fileID: 11400000, guid: 81f1e7a12f3e7e2479f8bbe0425b3dcf, type: 2}
+  levelsPath: Assets/Gameplay/Player/player_levels.csv
 --- !u!114 &6219627286428517167
 MonoBehaviour:
   m_ObjectHideFlags: 0

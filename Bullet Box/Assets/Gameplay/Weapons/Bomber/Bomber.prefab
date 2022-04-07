@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 47c71bd4a85f7ce488837c27bfa65d3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3877545a99b749f4aa2ca9671c080b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: bomber
-  pattern: {fileID: 11400000, guid: 43487fa708dcaea49bdfdf840aa8fdd9, type: 2}
-  sprite: {fileID: 3281497234920378437}
+  id: Bomber
+  icon: {fileID: 21300000, guid: d0999335f2722c14382da7c7d73882cf, type: 3}
+  levelsPath: Assets/Gameplay/Weapons/Bomber/bomber_stats.csv
+  projectile: {fileID: -301259732790074568, guid: b6acb7a2305c9914fa092d0f85828a06, type: 3}

@@ -19,7 +19,10 @@ namespace BulletBox
 		private Level Level => levels[levelIndex];
 
 		public void NotifySpawn() => enemiesLeft++;
-		public void NotifyDeath() => enemiesLeft--;
+		public void NotifyDeath()
+		{
+			enemiesLeft--;
+		}
 
 		public void NextLevel()
 		{
@@ -69,7 +72,7 @@ namespace BulletBox
 				Vector2 random;
 				do
 				{
-					random = Utility.RandomCircle(wave.Radius);
+					random = Random.insideUnitCircle * wave.Radius;
 				}
 				while (randoms.Any(v => (v - random).sqrMagnitude < cachedDistance));
 				randoms.Add(random);

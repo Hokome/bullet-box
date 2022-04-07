@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3281497234920378436}
   - component: {fileID: 3281497234920378437}
-  - component: {fileID: -2100589380718293776}
+  - component: {fileID: -1431642764179400997}
   m_Layer: 3
   m_Name: Machine Gun
   m_TagString: Untagged
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: e0ce49c5049b4ef4bb11fed2debe9c2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2100589380718293776
+--- !u!114 &-1431642764179400997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,5 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3877545a99b749f4aa2ca9671c080b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: mg
-  pattern: {fileID: 11400000, guid: 1679f331a3f164748b06e65b6afc12c8, type: 2}
+  id: Machinge Gun
+  icon: {fileID: 21300000, guid: d0999335f2722c14382da7c7d73882cf, type: 3}
+  levelsPath: Assets/Gameplay/Weapons/Machine Gun/machine_gun_stats.csv
+  projectile: {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}

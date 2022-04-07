@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 //Originally from AssetFactory
@@ -24,6 +25,56 @@ namespace BulletBox
 			} while (v.sqrMagnitude > 1f);
 			return v * radius;
 		}
+
+		/// <summary>
+		/// Selects a random element in the list
+		/// </summary>
+		public static T GetRandom<T>(this IList<T> list)
+		{
+			int r = UnityEngine.Random.Range(0, list.Count);
+			return list[r];
+		}
+
+#nullable enable
+		/// <summary>
+		/// Selects a random element in the list. 
+		/// If the element doesn't satisfy the condition, it will select an other random element.
+		/// Not infinite loop safe
+		/// </summary>
+		/// <param name="eligible">Condition for selection</param>
+		public static T SelectRandom<T>(this IList<T> list, System.Func<T, bool> eligible)
+		{
+			T choice;
+			do
+				choice = list[Random.Range(0, list.Count)];
+			while (!eligible(choice));
+			return choice;
+		}
+		/// <summary>
+		/// Selects a random element in the list.
+		/// If the element doesn't satisfy the condition, selects the next one.
+		/// Not equal probablility distribution, but prevents infinite loops.
+		/// </summary>
+		/// <param name="eligible">Condition for selection</param>
+		/// <returns></returns>
+		public static T SelectRandomSafe<T>(this IList<T> list, System.Func<T, bool> eligible)
+		{
+			int start = Random.Range(0, list.Count);
+			int next = start;
+			T choice = list[start];
+			while (!eligible(choice))
+			{
+				next = (next + 1) % list.Count;
+				if (start == next)
+				{
+					Debug.LogWarning("No element was eligible for selection, returning random element");
+					break;
+				}
+				choice = list[next];
+			}
+			return choice;
+		}
+#nullable disable
 
 		#region Visual
 		public static Color ChangeAlpha(Color baseColor, float newAlpha)

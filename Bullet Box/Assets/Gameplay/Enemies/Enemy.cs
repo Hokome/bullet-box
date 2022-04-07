@@ -11,6 +11,7 @@ namespace BulletBox
 		[SerializeField] private SpriteRenderer flash;
 		[Header("Stats")]
 		[SerializeField] protected float maxHealth;
+		[SerializeField] private int experience;
 
 		protected Rigidbody2D rb;
 		public float Health { get; set; }
@@ -20,11 +21,15 @@ namespace BulletBox
 		protected virtual void Start()
 		{
 			rb = GetComponent<Rigidbody2D>();
-			Health = maxHealth;
 			if (GameManager.GameMode == GameMode.Arcade)
 				LevelSpawner.Inst.NotifySpawn();
 		}
 
+		public virtual void ScaleDifficulty(float difficulty)
+		{
+			maxHealth *= difficulty;
+			Health = maxHealth;
+		}
 		public virtual void Hit(float damage)
 		{
 			Health -= damage;
@@ -45,10 +50,7 @@ namespace BulletBox
 			if (isDead) return;
 			isDead = true;
 			Destroy(gameObject);
-			if (GameManager.GameMode == GameMode.Arcade)
-			{
-				LevelSpawner.Inst.NotifyDeath();
-			}
+			EnemySpawner.Inst.Experience(experience, transform.position);
 		}
 	}
 }

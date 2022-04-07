@@ -24,10 +24,12 @@ namespace BulletBox
 		[SerializeField] private TMP_Text timer;
 		[Space]
 		[SerializeField] private BossHUD bossHUD;
+		[SerializeField] private DoubleGauge experience;
 
 		private CanvasGroup main;
 
 		public DoubleGauge HealthBar => healthBar;
+		public DoubleGauge Experience => experience;
 		public WeaponHUD[] WeaponHUDs => weapons;
 		public SpecialHUD SpecialHUD => specialHUD;
 		public TutorialHUD Tutorial => tutorial;
