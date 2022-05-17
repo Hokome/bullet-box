@@ -35,10 +35,7 @@ namespace BulletBox
 			{
 				if (!shooter.CanShoot)
 					yield return new WaitUntil(() => shooter.CanShoot);
-				Projectile p = Object.Instantiate(projectile);
-				p.transform.position = shooter.Transform.position;
-				if (!globalRotation)
-					p.transform.rotation = shooter.Transform.rotation;
+				Projectile p = Object.Instantiate(projectile, shooter.Transform.position, globalRotation ? Quaternion.identity : shooter.Transform.rotation);
 				p.transform.Rotate(0f, 0f, startAngle + (i * increment) + Random.Range(-imprecision, imprecision));
 				p.transform.Translate(offset);
 				p.gameObject.SetActive(true);
@@ -47,7 +44,9 @@ namespace BulletBox
 			}
 		}
 	}
-	// This interface enables the Projectile Pattern class to get context about the object that is shooting the projectile
+	/// <summary>
+	/// Enables <see cref="ProjectilePattern"/> to get context about the object that is shooting the projectiles.
+	/// </summary>
 	public interface IShooter
 	{
 		bool CanShoot { get; }

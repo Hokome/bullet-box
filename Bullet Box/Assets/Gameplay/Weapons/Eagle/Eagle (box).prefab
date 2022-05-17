@@ -42,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 6472437305946410685, guid: ad71ddf76a201ba47b4b43219d8e23bc, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 4040938228676482107, guid: eacc8e3bd59b48c4ba683d37d6302f64, type: 3}
+      objectReference: {fileID: 8953365493833106765, guid: 042c87fa44b1a5641a7c39609633e45c, type: 3}
     - target: {fileID: 7814204832544900722, guid: ad71ddf76a201ba47b4b43219d8e23bc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 7382770378253888011}
   - component: {fileID: 7382770378253888010}
   - component: {fileID: 7382770378253888005}
-  - component: {fileID: 3844177002817879819}
-  - component: {fileID: 449439608249122830}
   - component: {fileID: 5327247751317043303}
   m_Layer: 5
   m_Name: Button_Text
@@ -124,46 +122,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3844177002817879819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7382770378253888007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa0ce59e1b23ff4481a54ff3572c68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  easeType: 1
-  duration: 0.1
-  ignoreTimeScale: 1
-  forward: 1
-  scale: 0.9
-  animateOnHover: 0
-  animateOnSelect: 0
-  animateOnClick: 1
---- !u!114 &449439608249122830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7382770378253888007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa0ce59e1b23ff4481a54ff3572c68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  easeType: 1
-  duration: 0.1
-  ignoreTimeScale: 1
-  forward: 1
-  scale: 1.02
-  animateOnHover: 1
-  animateOnSelect: 1
-  animateOnClick: 0
 --- !u!114 &5327247751317043303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +247,7 @@ PrefabInstance:
     - target: {fileID: 3017655085659676420, guid: 931f48c0e0128284aa633a4fec67a14b, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -7909666080626669912, guid: 35e95c8e594d0714293f8e38eb2a3649, type: 2}
+      objectReference: {fileID: 2180264, guid: 464d9eed00ea8d449b17f5720a5ae7c8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 931f48c0e0128284aa633a4fec67a14b, type: 3}
 --- !u!224 &8030546585845776639 stripped

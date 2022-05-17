@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2769687600438583104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3806921192919338391, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_Radius
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113152, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_Name
+      value: Pekozooka rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113153, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113153, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113153, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c44e2c7f5785c944b8af1047c8cc8ed1, type: 3}
+    - target: {fileID: 8586911541668113153, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+--- !u!1 &5856155882741986368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8586911541668113152, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+  m_PrefabInstance: {fileID: 2769687600438583104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-301259732790074568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856155882741986368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00eaff0e913d51d448fb84e934fa9cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  speed: 3
+  acceleration: 12
+  range: 0
+  pierce: 1
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  hitSound: {fileID: 11400000, guid: 08e94e0313987d04e98ffe4996970afd, type: 2}
+  obstacleSound: {fileID: 11400000, guid: 08e94e0313987d04e98ffe4996970afd, type: 2}
+  explosionParticles: {fileID: 4857965023199512958, guid: 577074a8bcb01a248a0cdad6edf8c7e1, type: 3}
+  splashDamage: 10
+  explosionRadius: 2

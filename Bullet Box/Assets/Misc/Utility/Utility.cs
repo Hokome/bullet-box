@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Action = System.Action;
 
 //Originally from AssetFactory
 namespace BulletBox
@@ -12,6 +14,26 @@ namespace BulletBox
 		}
 		public static bool IsInLayerMask(int layer, LayerMask mask) => (mask.value & (1 << layer)) > 0;
 
+		public static Coroutine DelayCall(this MonoBehaviour m, Action action, float delay)
+		{
+			return m.StartCoroutine(Delay(action, delay));
+		}
+		private static IEnumerator Delay(Action a, float d)
+		{
+			yield return new WaitForSeconds(d);
+			a();
+		}
+
+		public static void DestroyChildren(this Transform t)
+		{
+			int c = t.childCount;
+			for (int i = 0; i < c; i++)
+			{
+				Object.Destroy(t.GetChild(0).gameObject);
+			}
+		}
+
+		#region Random
 		public static Vector2 RandomSquare(float radius)
 			=> new Vector2(
 				Random.Range(-radius, radius),
@@ -75,6 +97,7 @@ namespace BulletBox
 			return choice;
 		}
 #nullable disable
+		#endregion
 
 		#region Visual
 		public static Color ChangeAlpha(Color baseColor, float newAlpha)

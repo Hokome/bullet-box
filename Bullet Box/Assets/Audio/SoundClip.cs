@@ -10,7 +10,7 @@ namespace BulletBox.Audio
 	{
 		public AudioClip clip;
 		[Space]
-		[Range(0f, 1f)] public float volume = 1f;
+		[Range(0f,5f)] public float volume = 1f;
 		[Range(0.1f, 3f)] public float pitch = 1f;
 		[Space]
 		public AudioMixerGroup channel;
@@ -21,8 +21,8 @@ namespace BulletBox.Audio
 		{
 			AudioSource source = obj.AddComponent<AudioSource>();
 			source.clip = clip;
-			source.volume = volume * options.volumeMultiplier;
-			source.pitch = pitch * options.pitchMultiplier;
+			source.volume = volume * options.volume;
+			source.pitch = pitch * options.pitch;
 			source.loop = options.loop;
 			source.outputAudioMixerGroup = channel;
 			return source;

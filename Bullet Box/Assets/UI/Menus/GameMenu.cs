@@ -21,13 +21,10 @@ namespace BulletBox
 		[SerializeField] private Menu levelClearMenu;
 		[SerializeField] private TMP_Text levelClearText;
 		[Space]
-		[SerializeField] private Menu levelUpMenu;
-		[SerializeField] private Menu weaponSwitchMenu;
-		[SerializeField] private LevelUpOption[] levelUpOptions;
-		[SerializeField] private TMP_Text[] weaponSlots;
-
-		private Weapon weaponChoice;
-
+		[SerializeField] private Menu weaponSelectionMenu;
+		[SerializeField] private Transform weaponParent;
+		[SerializeField] private WeaponSelectionUI weaponSelectionPrefab;
+		[SerializeField] private Button goButton;
 		//Can be useful if the game has pop up menus only.
 
 		//public override void Back()
@@ -40,6 +37,8 @@ namespace BulletBox
 		//		CallOnBack();
 		//	}
 		//}
+
+		private WeaponLoadout loadout;
 
 		private void Awake()
 		{
@@ -65,63 +64,7 @@ namespace BulletBox
 			levelClearMenu.Display(false);
 			LevelSpawner.Inst.NextLevel();
 		}
-		public void LevelUp()
-		{
-			HUDManager.Inst.EnableMain(false);
-			SoleSelect(levelUpMenu);
-			int i = 0;
-			while (i < Player.Inst.Weapons.Length)
-			{
-				if (Player.Inst.Weapons[i].IsMaxLevel)
-				{
-					levelUpOptions[i].Button.interactable = false;
-					levelUpOptions[i].SetLevelMax(Player.Inst.Weapons[i]);
-				}
-				else
-				{
-					levelUpOptions[i].Button.interactable = true;
-					levelUpOptions[i].Weapon = Player.Inst.Weapons[i];
-					levelUpOptions[i].identifier = i;
-				}
-				i++;
-			}
-			while (i < levelUpOptions.Length)
-			{
-				Weapon weapon = GameManager.Inst.weaponsList.SelectRandom(w => !Player.Inst.HasWeapon(w));
-				levelUpOptions[i].identifier = i;
-				levelUpOptions[i].Weapon = weapon;
-				i++;
-			}
-		}
-		public void ApplyLevelUp(int index)
-		{
-			if (index < Player.Inst.Weapons.Length)
-			{
-				Player.Inst.Weapons[index].Level++;
-				Resume();
-			}
-			else
-			{
-				weaponChoice = levelUpOptions[index].Weapon;
-				for (int i = 0; i < weaponSlots.Length; i++)
-				{
-					weaponSlots[i].text = Player.Inst.Weapons[i].ID;
-				}
-				SoleSelect(weaponSwitchMenu);
-			}
-		}
-		public void SwitchWeapon(int index)
-		{
-			Player.Inst.SetWeapon(index, weaponChoice);
-			Resume();
-		}
-		private void Resume()
-		{
-			HUDManager.Inst.EnableMain(true);
-			CurrentMenu.Display(false);
-			Time.timeScale = 1f;
-		}
-
+	
 		private LTDescr gameOver;
 		public void GameOver(bool won)
 		{
@@ -129,6 +72,7 @@ namespace BulletBox
 			gameOverText.text = won ? "Finished!" : "Game Over";
 			gameOverGroup.blocksRaycasts = true;
 			gameOverGroup.interactable = false;
+			Cursor.visible = true;
 
 			gameOver = LeanTween.alphaCanvas(gameOverGroup, 1f, 2f); 
 			gameOver.setOnComplete(() =>
@@ -139,6 +83,45 @@ namespace BulletBox
 			});
 			gameOver.setIgnoreTimeScale(true);
 		}
+		public void SelectScreen()
+		{
+			Time.timeScale = 0f;
+			SoleSelect(weaponSelectionMenu);
+			HUDManager.Inst.EnableMain(false);
+			Cursor.visible = true;
+			goButton.interactable = false;
+			loadout = new WeaponLoadout(GameManager.Rules.MaxWeapons);
+			weaponParent.DestroyChildren();
+			foreach (Weapon w in GameManager.Rules.availableWeapons)
+			{
+				WeaponSelectionUI ui = Instantiate(weaponSelectionPrefab, weaponParent);
+				ui.Weapon = w;
+			}
+		}
+		public void SelectWeapon(Weapon w)
+		{
+			for (int i = 0; i < loadout.weapons.Length; i++)
+			{
+				if (loadout.weapons[i] == null)
+				{
+					loadout.weapons[i] = w;
+					break;
+				}
+				else if (loadout.weapons[i] == w) return;
+			}
+			if (loadout.weapons.All(w => w != null))
+				goButton.interactable = true;
+
+		}
+		public void StartGame()
+		{
+			if (loadout.weapons.Any(w => w == null)) return;
+			CurrentMenu.Display(false);
+			HUDManager.Inst.EnableMain(true);
+			GameManager.Inst.StartGame(loadout);
+			Cursor.visible = false;
+		}
+
 		protected override void OnEnable()
 		{
 			base.OnEnable();

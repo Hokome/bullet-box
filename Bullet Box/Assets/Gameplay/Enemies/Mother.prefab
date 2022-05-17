@@ -76,11 +76,11 @@ SpriteRenderer:
   m_SortingLayerID: -346627223
   m_SortingLayer: 1
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 558a15492cc591940946d84ae4104e24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d16305bbb3ca0c045a4373167b69fb9d, type: 3}
   m_Color: {r: 0.8262707, g: 0.6745098, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
+  m_DrawMode: 0
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -123,7 +123,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.8
 --- !u!114 &3490301190281803239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,11 +226,7 @@ PrefabInstance:
     - target: {fileID: 6216539995530336221, guid: bec7547d2ed2e594f95e0a8a5a6563ff, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8ac8d06ddc6a16142adba164c51371b2, type: 3}
-    - target: {fileID: 6216539995530336221, guid: bec7547d2ed2e594f95e0a8a5a6563ff, type: 3}
-      propertyPath: m_DrawMode
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: d16305bbb3ca0c045a4373167b69fb9d, type: 3}
     - target: {fileID: 6216539995530336221, guid: bec7547d2ed2e594f95e0a8a5a6563ff, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

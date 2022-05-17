@@ -28,10 +28,10 @@ namespace BulletBox
 		public void StartGame(int mode)
 		{
 			int sceneIndex;
-			if (!Save.Current.tutorialCompleted)
-				sceneIndex = 2;
-			else
-				sceneIndex = mode == 0 ? 3 : 4;
+			//if (!Save.Current.tutorialCompleted)
+			//	sceneIndex = 2;
+			//else
+			sceneIndex = mode == 0 ? 3 : 4;
 			SceneTransitioner.Inst.LoadScene(sceneIndex, delegate
 			{
 				HUDManager.Inst.enabled = true;
@@ -62,11 +62,13 @@ namespace BulletBox
 		{
 			base.OnEnable();
 			ToMain();
+			Cursor.visible = true;
 		}
 		protected override void OnDisable()
 		{
 			base.OnDisable();
 			currentMenu.Display(false);
+			Cursor.visible = false;
 		}
 	}
 }

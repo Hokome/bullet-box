@@ -12,6 +12,8 @@ namespace BulletBox
 		public static bool IsPaused => Inst.Paused;
 
 		private bool paused;
+		private bool timeStopped;
+
 		public bool Paused
 		{
 			get => paused;
@@ -27,8 +29,17 @@ namespace BulletBox
 					if (currentMenu != null)
 						currentMenu.Display(false);
 				}
-
-				Time.timeScale = value ? 0f : 1f;
+				Cursor.visible = paused;
+				TimeStopped = value;
+			}
+		}
+		public bool TimeStopped
+		{
+			get => timeStopped;
+			set
+			{
+				Time.timeScale = value ? 0f : Player.Exists ? Player.Inst.TimeScale : 1f;
+				timeStopped = value;
 			}
 		}
 

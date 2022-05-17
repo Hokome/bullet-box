@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uses: 2
   pattern:
-    projectile: {fileID: 8586911541668113167, guid: f1a24ab037dbca8409239ff7aafa1ac4, type: 3}
+    projectile: {fileID: 2500231798597329274, guid: 197bddaf96abb7049b98a053a24e9f67, type: 3}
     fireRate: 0
     projectileCount: 16
     totalAngle: 360

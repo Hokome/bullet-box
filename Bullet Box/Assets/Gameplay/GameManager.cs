@@ -14,14 +14,33 @@ namespace BulletBox
 		private static float startTime;
 
 		[SerializeField] private GameMode mode;
-		public List<Weapon> weaponsList;
+		[SerializeField] private GameRules rules;
+		[SerializeField] private Player playerPrefab;
+		[SerializeField] private SpawnZone[] playerSpawns;
+		[SerializeField] private Cinemachine.CinemachineVirtualCamera playerCamera;
+
+		public static GameRules Rules => Inst.rules;
 		private bool gameEnded;
 
 		public int MaxLevel { get; set; }
 
 		private void Start()
 		{
+			GameMenu.Inst.SelectScreen();
+		}
+
+		public void StartGame(WeaponLoadout loadout)
+		{
+			Time.timeScale = 1f;
 			startTime = Time.time;
+
+			Player p = Instantiate(playerPrefab);
+			p.transform.position = playerSpawns.GetRandom().GetPosition();
+			p.SetLoadout(loadout);
+
+			playerCamera = Instantiate(playerCamera);
+			playerCamera.transform.position = p.transform.position;
+			playerCamera.Follow = p.transform;
 		}
 
 		private void Update()

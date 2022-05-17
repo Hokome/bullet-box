@@ -1,37 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace BulletBox.UI
 {
-    public class WeaponHUD : MonoBehaviour
+    public class WeaponHUD : WeaponUI
     {
-		[SerializeField] private Image background;
-		[SerializeField] private TMP_Text text;
 		[Space]
+		[SerializeField] protected Image background;
 		[SerializeField] private Sprite unselectedSprite;
 		[SerializeField] private Sprite selectedSprite;
 		[SerializeField] private Sprite emptySprite;
 
-		private Weapon weapon;
-		private bool selected;
-		public Weapon Weapon
+		public override Weapon Weapon
 		{
-			get => weapon;
+			get => base.Weapon;
 			set
 			{
-				weapon = value;
+				base.Weapon = value;
 				if (weapon == null)
-				{
 					Selected = false;
-					text.text = string.Empty;
-				}
-				text.text = weapon.name[0].ToString();
 			}
 		}
 
+		private bool selected;
 		public bool Selected
 		{
 			get => selected;
@@ -48,6 +41,5 @@ namespace BulletBox.UI
 				background.sprite = selected ? selectedSprite : unselectedSprite;
 			}
 		}
-
 	}
 }

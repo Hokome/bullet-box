@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4169349213863132530
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3092942900064560047, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092942900064560047, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092942900064560047, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 428ab47e74e909c42816856e498c922d, type: 3}
+    - target: {fileID: 3092942900064560047, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092942900064560047, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223712380227228427, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252732123382674584, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_Name
+      value: Heavy gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087451584854886200, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 428ab47e74e909c42816856e498c922d, type: 3}
+    - target: {fileID: 8087451584854886200, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1289931475998606467, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+--- !u!1 &6735802250957179370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7252732123382674584, guid: 6d6d9f3b5ea42b54d9b9aeeff99b341d, type: 3}
+  m_PrefabInstance: {fileID: 4169349213863132530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6196116375988303887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735802250957179370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2d5ef8b25a8ca4f9328b796d5656fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Heavy gun
+  icon: {fileID: 21300000, guid: 428ab47e74e909c42816856e498c922d, type: 3}
+  description: Charges for a while then fires a bullets in quick succession at a
+    good range.
+  pattern:
+    projectile: {fileID: 1654162532635760970, guid: eded81b5c907056499cd07d9c61963ca, type: 3}
+    fireRate: 15
+    projectileCount: 1
+    totalAngle: 0
+    imprecision: 4
+    spread: 0
+    offset: {x: 0.5, y: 0}
+    globalRotation: 0
+  crosshair: {fileID: 2210144300720572529, guid: 21eb270cfdb4d114280cbcb081b2763c, type: 3}
+  fireSound: {fileID: 11400000, guid: 99a5b6f82bf7a8e40a7617a173ae5fa3, type: 2}
+  maxCharge: 2.5
+  chargeBurn: 0.6
+  chargeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6850962
+      value: 0.33737683
+      inSlope: 1.1519382
+      outSlope: 1.1519382
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12387886
+      outWeight: 0.44304907
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.5334966
+      outSlope: 3.5334966
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1721271
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

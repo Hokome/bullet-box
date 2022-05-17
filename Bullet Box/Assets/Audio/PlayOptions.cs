@@ -6,18 +6,26 @@ using UnityEngine;
 namespace BulletBox.Audio
 {
 	[System.Serializable]
-    public class PlayOptions 
+    public struct PlayOptions 
 	{
-		public PlayOptions()
+		public static PlayOptions Default => new PlayOptions(1f, 1f, 0f, false);
+
+		public float volume;
+		public float pitch;
+		public float maxDistance;
+		public bool loop;
+
+		public PlayOptions(float volume, float pitch, float maxDistance, bool loop)
 		{
-			volumeMultiplier = 1f;
-			pitchMultiplier = 1f;
-			loop = false;
+			this.volume = volume;
+			this.pitch = pitch;
+			this.maxDistance = maxDistance;
+			this.loop = loop;
 		}
 
-		public float volumeMultiplier = 1f;
-		public float pitchMultiplier = 1f;
-		public float maxDistance = 0f;
-		public bool loop = false;
-    }
+		public void RandomizeVolume(float difference) => volume += GetRandom(difference);
+		public void RandomizePitch(float difference) => pitch += GetRandom(difference);
+
+		private float GetRandom(float dif) => Random.Range(-dif, dif);
+	}
 }

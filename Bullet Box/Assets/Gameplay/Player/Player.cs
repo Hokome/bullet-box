@@ -10,22 +10,23 @@ namespace BulletBox
 {
 	[RequireComponent(typeof(PlayerInput))]
 	[RequireComponent(typeof(Rigidbody2D))]
-	[RequireComponent(typeof(CircleCollider2D))]
 	public class Player : MonoSingleton<Player>, IHittable
 	{
 		[SerializeField] private float acceleration = 1f;
 		[SerializeField] private float maxSpeed = 1f;
-		[SerializeField] private float maxHealth = 5f;
-		[SerializeField] private float invincibilityTime = 3f;
 		[Space]
-		[SerializeField] private List<Weapon> weapons;
+		[SerializeField] private int maxHealth = 3;
+		[SerializeField] private float invincibilityTime = 2f;
+		[Space]
 		[SerializeField] private Ability ability;
-		[Space]
-		[SerializeField] private string levelsPath;
+		[Header("Cheats")]
+		[SerializeField] private bool godMode;
+		[SerializeField] private float timeScale;
+		public float TimeScale => timeScale;
+
+		[HideInInspector] public Weapon[] weapons;
 
 		private float lastAbility = float.NegativeInfinity;
-		private Pickupable pickupable;
-		private CSVReader levels;
 
 		private Camera cam;
 		private PlayerInput input;
@@ -38,8 +39,8 @@ namespace BulletBox
 		public Rigidbody2D Rb { get; private set; }
 		#endregion
 
-		private float health;
-		public float Health
+		private int health;
+		public int Health
 		{
 			get => health;
 			set
@@ -60,12 +61,16 @@ namespace BulletBox
 				HUDManager.Inst.WeaponHUDs[weaponIndex].Selected = false;
 
 				if (value < 0)
-					value += weapons.Count;
-				weaponIndex = value % weapons.Count;
+					value += weapons.Length;
+				weaponIndex = value % weapons.Length;
+
 
 				SetSpriteInvincible(Weapon.Sr, Invincible);
 				Weapon.gameObject.SetActive(true);
 				HUDManager.Inst.WeaponHUDs[weaponIndex].Selected = true;
+
+				if (FireInput)
+					Weapon.OnFireDown();
 			}
 		}
 		public Weapon Weapon
@@ -79,7 +84,6 @@ namespace BulletBox
 				WeaponIndex = WeaponIndex;
 			}
 		}
-		public Weapon[] Weapons => weapons.ToArray();
 
 		private SpecialWeapon special;
 		public SpecialWeapon Special
@@ -106,53 +110,6 @@ namespace BulletBox
 			}
 		}
 
-		private int experience;
-		public int Experience
-		{
-			get => experience;
-			set
-			{
-				if (isMaxLevel) return;
-
-				experience = value;
-				HUDManager.Inst.Experience.Value = experience;
-				if (experience >= nextLevel)
-				{
-					Level++;
-				}
-			}
-		}
-
-		private int nextLevel;
-		private int level;
-		private int Level
-		{
-			get => level;
-			set
-			{
-				level = value;
-				if (level > 1)
-				{
-					LevelUp();
-				}
-
-				nextLevel = levels.ReadInt("Experience", level);
-				GameManager.Difficulty = levels.ReadFloat("Difficulty", level);
-				if (level == levels.height - 1)
-				{
-					isMaxLevel = true;
-					HUDManager.Inst.Experience.Max = 1;
-					HUDManager.Inst.Experience.Value = 1;
-					HUDManager.Inst.Experience.ForceUpdate();
-				}
-				else
-				{
-					HUDManager.Inst.Experience.Max = nextLevel;
-					Experience = 0;
-				}
-			}
-		}
-		private bool isMaxLevel = false;
 
 		#region Messages
 		protected override void Awake()
@@ -160,35 +117,16 @@ namespace BulletBox
 			base.Awake();
 			input = GetComponent<PlayerInput>();
 			InitializeInput();
-
-			levels = new CSVReader(levelsPath);
-			GameManager.Inst.MaxLevel = levels.height - 1;
-			Level = 1;
-			HUDManager.Inst.Experience.ForceUpdate();
 		}
 		private void Start()
 		{
 			Rb = GetComponent<Rigidbody2D>();
-			sr = GetComponent<SpriteRenderer>();
+			sr = GetComponentInChildren<SpriteRenderer>();
 			cam = Camera.main;
+			Time.timeScale = TimeScale;
 
 			HUDManager.Inst.HealthBar.Max = maxHealth;
 			Health = maxHealth;
-			HUDManager.Inst.HealthBar.ForceUpdate();
-
-			for (int i = 0; i < weapons.Capacity; i++)
-			{
-				if (weapons.Count <= i)
-				{
-					HUDManager.Inst.WeaponHUDs[i].Weapon = null;
-					break;
-				}
-				weapons[i] = Instantiate(weapons[i], transform);
-				HUDManager.Inst.WeaponHUDs[i].Weapon = weapons[i];
-			}
-
-			WeaponIndex = 1;
-			WeaponIndex = 0;
 
 			HUDManager.Inst.SpecialHUD.Special = null;
 		}
@@ -216,14 +154,26 @@ namespace BulletBox
 				Vector3 point = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 				//Using another variable to cast to Vector2
 				direction = point - Weapon.transform.position;
+				AimInput = direction.normalized;
+				Weapon.Crosshair.transform.position = (Vector2)point;
 			}
 			else
 			{
 				direction = AimInput;
+				Weapon.Crosshair.transform.position
+					= (Vector2)transform.position + (AimInput * Weapon.Crosshair.Distance);
+			}
+			if (AimInput.x > 0f)
+			{
+				sr.flipX = false;
+				Weapon.Sr.flipY = false;
+			}
+			else
+			{
+				sr.flipX = true;
+				Weapon.Sr.flipY = true;
 			}
 			Weapon.transform.right = direction;
-			if (FireInput)
-				Weapon.Fire();
 		}
 		#endregion
 
@@ -233,7 +183,6 @@ namespace BulletBox
 		private InputAction fireAction;
 		private InputAction abilityAction;
 		private InputAction scrollAction;
-		private InputAction pickupAction;
 		private InputAction specialAction;
 		private InputAction pauseAction;
 
@@ -258,9 +207,6 @@ namespace BulletBox
 
 			scrollAction = input.actions.FindAction("Scroll");
 			actionHandlers.Add(scrollAction, Scroll);
-
-			pickupAction = input.actions.FindAction("Pickup");
-			actionHandlers.Add(pickupAction, PickUp);
 
 			specialAction = input.actions.FindAction("Special");
 			actionHandlers.Add(specialAction, UseSpecial);
@@ -288,12 +234,15 @@ namespace BulletBox
 		{
 			if (ctx.performed)
 			{
-				HasShot = true;
+				Weapon.OnFireDown();
 				FireInput = true;
+
+				HasShot = true;
 			}
 			else if (ctx.canceled)
 			{
 				FireInput = false;
+				Weapon.OnFireUp();
 			}
 		}
 		private void UseAbility(InputCallback ctx)
@@ -319,14 +268,6 @@ namespace BulletBox
 			WeaponIndex += delta;
 			lastScroll = Time.time;
 		}
-		private void PickUp(InputCallback ctx)
-		{
-			if (!ctx.performed) return;
-			if (pickupable == null) return;
-
-			pickupable.PickUp(this);
-			pickupable = null;
-		}
 		private void UseSpecial(InputCallback ctx)
 		{
 			if (!ctx.performed) return;
@@ -342,41 +283,37 @@ namespace BulletBox
 		}
 		#endregion
 
-		public void NotifyPickup(Pickupable p, bool enter)
-		{
-			if (enter)
-				pickupable = p;
-			else
-			{
-				if (p == null)
-					pickupable = p;
-			}
-		}
-		private void LevelUp()
-		{
-			Time.timeScale = 0f;
-			GameMenu.Inst.LevelUp();
-		}
-
 		#region Tutorial check
 		public bool HasShot { get; private set; }
 		public bool HasUsedAbility { get; private set; }
 		public bool HasUsedSpecial { get; private set; }
 		#endregion
 		public bool HasWeapon(Weapon w) => weapons.Any(o => o.ID == w.ID);
+		public void SetLoadout(WeaponLoadout loadout)
+		{
+			weapons = new Weapon[loadout.weapons.Length];
+			for (int i = 0; i < loadout.weapons.Length; i++)
+			{
+				SetWeapon(i, loadout.weapons[i]);
+			}
+			WeaponIndex = 0;
+		}
 		public void SetWeapon(int index, Weapon weaponChoice)
 		{
-			Destroy(weapons[index].gameObject);
-			weapons[index] = Instantiate(weaponChoice, transform);
-			HUDManager.Inst.WeaponHUDs[weaponIndex].Weapon = Weapon;
+			if (weapons[index] != null)
+				Destroy(weapons[index].gameObject);
+			weaponChoice = Instantiate(weaponChoice, transform);
+			weapons[index] = weaponChoice;
+			HUDManager.Inst.WeaponHUDs[index].Weapon = weaponChoice;
 			WeaponIndex = index;
 		}
 
 		public void Hit(float damage)
 		{
+			if (godMode) return;
 			if (Invincible)
 				return;
-			Health -= damage;
+			Health--;
 
 			StartCoroutine(HitCoroutine());
 

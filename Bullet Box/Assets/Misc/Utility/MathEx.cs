@@ -23,6 +23,17 @@ public static class MathEx
         return v;
     }
 
+	public static Vector2 Average(Vector2 a, Vector2 b) => (a + b) / 2f;
+	public static Vector2 Average(params Vector2[] vs)
+	{
+		Vector2 ret = new Vector2();
+		for (int i = 0; i < vs.Length; i++)
+		{
+			ret += vs[i];
+		}
+		return ret / vs.Length;
+	}
+
     /// <summary>
     /// Clamp the angle of a vector between two angles (works on both sides)
     /// </summary>

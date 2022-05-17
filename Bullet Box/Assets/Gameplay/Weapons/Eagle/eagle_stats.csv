@@ -1,5 +1,0 @@
-Level,Description,Damage,Speed,Pierce,Fire rate,P Count,Total Angle,Spread,Imprecision,Range
-1,Shoots a fast projectile that can hit multiple enemies in one shot.,2,8,3,1.8,1,0,0,0,8
-2,Damage up.,3,8,3,1.8,1,0,0,0,8
-3,Fire rate up,3,8,3,2.4,1,0,0,0,8
-4,Pierce&c range and projectile speed up,3,10,5,2.4,1,0,0,0,12

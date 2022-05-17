@@ -7,7 +7,7 @@ namespace BulletBox
 {
     public class Spawner : MonoBehaviour
     {
-		[SerializeField] protected Vector2 spawnRange;
+		[SerializeField] protected SpawnZone[] zones;
 		[SerializeField] protected Spawnable[] spawns;
 		[SerializeField] private float initialDelay;
 		[SerializeField] private float budgetIncrease;
@@ -81,14 +81,7 @@ namespace BulletBox
 		{
 			Instantiate(s).transform.position = (Vector2)position;
 		}
-		protected Vector2 RandomPosition() 
-			=> new Vector2(
-				Random.Range(-spawnRange.x, spawnRange.x),
-				Random.Range(-spawnRange.y, spawnRange.y));
+		protected Vector2 RandomPosition() => zones.GetRandom().GetPosition();
 
-		private void OnDrawGizmosSelected()
-		{
-			DebugEx.DrawRect(new Rect(-spawnRange, spawnRange * 2), Color.blue);
-		}
 	}
 }

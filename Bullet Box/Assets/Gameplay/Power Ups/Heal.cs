@@ -6,7 +6,7 @@ namespace BulletBox
 {
     public class Heal : PowerUp
     {
-		[SerializeField] private float amount;
+		[SerializeField] private int amount;
 
 		public override void OnPickUp(Player p)
 		{

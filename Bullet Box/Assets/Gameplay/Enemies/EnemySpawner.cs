@@ -8,7 +8,6 @@ namespace BulletBox
     {
 		public static EnemySpawner Inst { get; private set; }
 
-		[SerializeField] private ExperiencePoint expPrefab;
 		[SerializeField] private ParticleSystem spawnParticles;
 		[SerializeField] private Color particlesColor = Color.white;
 
@@ -16,14 +15,6 @@ namespace BulletBox
 		{
 			Inst = this;
 			GameManager.enemySpawner = this;
-		}
-
-		public void Experience(int amount, Vector2 position)
-		{
-			for (int i = 0; i < amount; i++)
-			{
-				Instantiate(expPrefab).transform.position = Random.insideUnitCircle * 0.5f + position;
-			}
 		}
 
 		public override void Spawn(Spawnable s, Vector3 pos) => Spawn(s, pos, particlesColor);

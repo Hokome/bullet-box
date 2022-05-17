@@ -9,11 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3806921192919338391, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
       propertyPath: m_Radius
-      value: 0.1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8586911541668113152, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
       propertyPath: m_Name
       value: Shotgun projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113152, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8586911541668113153, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
       propertyPath: m_Size.x
@@ -22,6 +26,14 @@ PrefabInstance:
     - target: {fileID: 8586911541668113153, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
       propertyPath: m_Size.y
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113153, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 946729d78b8e15d4abb9f1965d374b21, type: 3}
+    - target: {fileID: 8586911541668113153, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
       propertyPath: m_RootOrder
@@ -66,6 +78,18 @@ PrefabInstance:
     - target: {fileID: 8586911541668113166, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: range
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: speed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586911541668113167, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}
+      propertyPath: damage
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd5f5398f66439d44a7811dc2f5c137a, type: 3}

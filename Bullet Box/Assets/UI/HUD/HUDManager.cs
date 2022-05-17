@@ -13,7 +13,7 @@ namespace BulletBox
     {
 		#region References
 		[Header("Player")]
-		[SerializeField] private DoubleGauge healthBar;
+		[SerializeField] private IntegerGauge healthBar;
 		[SerializeField] private Image abilityCooldown;
 		[SerializeField] private WeaponHUD[] weapons;
 		[SerializeField] private SpecialHUD specialHUD;
@@ -24,12 +24,10 @@ namespace BulletBox
 		[SerializeField] private TMP_Text timer;
 		[Space]
 		[SerializeField] private BossHUD bossHUD;
-		[SerializeField] private DoubleGauge experience;
 
 		private CanvasGroup main;
 
-		public DoubleGauge HealthBar => healthBar;
-		public DoubleGauge Experience => experience;
+		public IntegerGauge HealthBar => healthBar;
 		public WeaponHUD[] WeaponHUDs => weapons;
 		public SpecialHUD SpecialHUD => specialHUD;
 		public TutorialHUD Tutorial => tutorial;

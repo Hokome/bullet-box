@@ -28,8 +28,9 @@ namespace BulletBox
 			//list.clips.ForEach(c => clipDictionary.Add(c.name, c));
 		}
 
-		public static AudioSource PlaySound(SoundClip sound) => PlaySound(sound, Vector3.zero, new PlayOptions());
+		public static AudioSource PlaySound(SoundClip sound) => PlaySound(sound, Vector3.zero, PlayOptions.Default);
 		public static AudioSource PlaySound(SoundClip sound, PlayOptions options) => PlaySound(sound, Vector3.zero, options);
+		public static AudioSource PlaySound(SoundClip sound, Vector3 position) => PlaySound(sound, position, PlayOptions.Default);
 		public static AudioSource PlaySound(SoundClip sound, Vector3 position, PlayOptions options)
 		{
 			AudioSource source = CreateObject(sound, options);

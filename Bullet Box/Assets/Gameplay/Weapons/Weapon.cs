@@ -1,3 +1,4 @@
+using BulletBox.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,79 +9,76 @@ namespace BulletBox
     {
 		[SerializeField] private string id;
 		[SerializeField] private Sprite icon;
-		[SerializeField] private string levelsPath;
-		[SerializeField] private Projectile projectile;
-		private ProjectilePattern pattern;
+		[SerializeField] private string description;
+		[Space]
+		[SerializeField] protected ProjectilePattern pattern;
+		[SerializeField] private Crosshair crosshair;
+		[SerializeField] private SFXClip fireSound;
 
-		private CSVReader levelTable;
-		public CSVReader LevelTable
-		{
-			get => levelTable ??= new CSVReader(levelsPath);
-		}
-
-		private void Awake()
-		{
-			pattern = new ProjectilePattern
-			{
-				projectile = Instantiate(projectile, transform)
-			};
-			Level = 1;
-		}
-
+		public string Description => description;
 		private SpriteRenderer sr;
 		public SpriteRenderer Sr
 		{
 			get
 			{
 				if (sr == null)
-					sr = GetComponent<SpriteRenderer>();
+					sr = GetComponentInChildren<SpriteRenderer>();
 				return sr;
 			}
 		}
 
 		public string ID => id;
 		public Sprite Icon => icon;
+		public Crosshair Crosshair => crosshair;
 
-		private float lastShot;
-
-		private int level;
-		public int Level
-		{
-			get => level;
-			set
-			{
-				level = value;
-				SetLevel(value);
-			}
-		}
 		public bool CanShoot => true;
 		public Transform Transform => transform;
 		public float AttackSpeed => 1f;
 		public MonoBehaviour Behaviour => this;
-		public bool IsMaxLevel => level >= LevelTable.height - 1;
 
+		protected float lastShot = float.NegativeInfinity;
+		protected bool isFiring;
 
-		protected void SetLevel(int level) 
+		private void Awake()
 		{
-			pattern.projectile.SetLevel(level, LevelTable);
-			pattern.fireRate = LevelTable.ReadFloat("Fire rate", level);
-			pattern.projectileCount = LevelTable.ReadInt("P Count", level);
-			pattern.totalAngle = LevelTable.ReadFloat("Total Angle", level);
-			pattern.imprecision = LevelTable.ReadFloat("Imprecision", level);
-			pattern.spread = LevelTable.ReadFloat("Spread", level);
+			crosshair = Instantiate(crosshair);
+		}
+		protected virtual void OnEnable()
+		{
+			crosshair.gameObject.SetActive(true);
+		}
+		protected virtual void OnDisable()
+		{
+			if (crosshair != null)
+				crosshair.gameObject.SetActive(false);
+			isFiring = false;
 		}
 
-		public void Fire()
+		protected virtual void Update()
 		{
-			if (Time.time - lastShot >= AttackSpeed / pattern.fireRate)
+			TryShoot();
+		}
+		protected void TryShoot()
+		{
+			if (isFiring && CanShoot && Time.time - lastShot >= 1f / (pattern.fireRate * AttackSpeed))
 			{
+				PlayOptions p = PlayOptions.Default;
+				p.RandomizeVolume(0.1f);
+				p.RandomizePitch(0.05f);
+
+				if (fireSound != null)
+					AudioManager.PlaySound(fireSound, transform.position, p);
 				StartCoroutine(pattern.ShootOnce(this));
 				lastShot = Time.time;
 			}
 		}
-		public string GetNextLevelDescription()
+		public virtual void OnFireDown()
 		{
-			return LevelTable.ReadString("Description", level + 1);
+			isFiring = true;
+		}
+		public virtual void OnFireUp()
+		{
+			isFiring = false;
 		}
 	}
 }
